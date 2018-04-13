@@ -1,12 +1,14 @@
-# 
+require './config/environment'
+
 
 class ApplicationController < Sinatra::Base
 
 #enable sessions
-  enable :sessions
-  set :session_secret, "action_secret" 	
-  use Rack::Flash
-
+ 
+    enable :sessions
+    set :session_secret, "action_secret" 	
+    use Rack::Flash
+  
 
   configure do
     set :public_folder, 'public'
@@ -14,11 +16,13 @@ class ApplicationController < Sinatra::Base
   end
 
 # question, line 13 could be this, why not?  set :views, Proc.new { File.join(root, "../views/") }
+#   set :views, Proc.new { File.join(root, "../views/") }
+#  register Sinatra::Twitter::Bootstrap::Assets
 
 
   get "/" do
   	session.clear
-  	@actions = Act.all
+  	@actss = Act.all
     erb :'index'
   end
 

@@ -1,5 +1,3 @@
-require 'sinatra/base'
-
 require './config/environment'
 
 
@@ -8,6 +6,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
+
 use UsersController
 use ActsController
 run ApplicationController
