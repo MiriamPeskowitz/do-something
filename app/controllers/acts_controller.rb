@@ -1,94 +1,93 @@
-
-class ActionsController < ApplicationController
+class ActsController < ApplicationController
 	
 
-	get '/actions' do
+	get '/acts' do
 		if logged_in?
-			@actions = current_user.actions
-			erb :'actions/index' 
+			@acts = current_user.acts
+			erb :'acts/index' 
 		else 
-			redirect to '/citizens/login'
+			redirect to '/users/login'
 		end 
 	end 
 
 
-	get '/actions/new' do
+	get '/acts/new' do
 		if logged_in? 
-			erb :'actions/new'
+			erb :'acts/new'
 		else 
-			redirect to '/citizens/login'	
+			redirect to '/users/login'	
 		end 
 	end 
 	
 
-	post '/actions' do
+	post '/acts' do
 		if logged_in? 
 
 			if current_user && params[:description] != ""
 				# @citizen = Citizen.find_by(:username => params[:username])
-				@action = Action.create(:title => params[:title], :date => params[:date], :description => params[:description], :citizen_id => current_user.id)
+				@act = Acts.create(:title => params[:title], :date => params[:date], :description => params[:description], :user_id => current_user.id)
 	
 				
-				redirect to "/actions/#{@action.id}"
+				redirect to "/acts/#{@acts.id}"
 			
 			else 
-				redirect to '/actions/new'
+				redirect to '/acts/new'
 			end
 		else
-			redirect to '/citizens/login'
+			redirect to '/users/login'
 		end
 	end 
 
 
 
-	get '/actions/:id' do
+	get '/acts/:id' do
 		if !logged_in?
-			redirect to '/citizens/login'	
+			redirect to '/users/login'	
 		else
-			@action = Action.find_by(:id => params[:id])
+			@act = Acts.find_by(:id => params[:id])
 		
-			erb :'actions/show'
+			erb :'acts/show'
 
 		end 
 	end 
 
 
-	get '/actions/:id/edit' do
+	get '/acts/:id/edit' do
 		# possible: use slug? 
 		# @action = Action.find_by_slug(params[:slug])
 		# @action.update(params[:title], params[:date], params[:description])
 
-		@action= Action.find_by(:id => params[:id])
-		if logged_in? && @action
-			if current_user.id == @action.citizen_id
-				erb :'actions/edit'
+		@act= Act.find_by(:id => params[:id])
+		if logged_in? && @act
+			if current_user.id == @act.user_id
+				erb :'acts/edit'
 			else 
-				redirect to '/actions'
+				redirect to '/acts'
 			end 
 		else
-		redirect to '/citizens/login'
+		redirect to '/users/login'
 		end 
 	end 
 
 
-	patch '/actions/:id' do
-		@action = Action.find_by_id(params[:id])
-		redirect to '/citizens/login' if !logged_in?
-		if params[:description] == "" || current_user.id != @action.citizen_id
-			redirect to "/actions/#{@action.id}/edit"
+	patch '/acts/:id' do
+		@act = Act.find_by_id(params[:id])
+		redirect to '/users/login' if !logged_in?
+		if params[:description] == "" || current_user.id != @act.user_id
+			redirect to "/acts/#{@act.id}/edit"
 		else
-		    @action.update(:description => params[:description])
-		    redirect to "/actions/#{@action.id}"
+		    @act.update(:description => params[:description])
+		    redirect to "/acts/#{@act.id}"
 		end 
 	end 
 
 
-	delete '/actions/:id' do
-		@action = Action.find_by_id(params[:id])
+	delete '/acts/:id' do
+		@act = Act.find_by_id(params[:id])
 		redirect to "/" if !logged_in?
 
-		if @action && @action.citizen_id == current_user.id
-			@action.delete 
+		if @act && @act.user_id == current_user.id
+			@act.delete 
 			redirect to '/'
 		end
 	end

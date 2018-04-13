@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     # use Rack::Flash
-Change everything to users -- 
+# Change everything to users -- 
   	get '/users/signup' do
     
   		if logged_in? 

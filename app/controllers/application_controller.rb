@@ -1,4 +1,4 @@
-require './config/environment'
+# 
 
 class ApplicationController < Sinatra::Base
 
@@ -12,6 +12,9 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
   end
+
+# question, line 13 could be this, why not?  set :views, Proc.new { File.join(root, "../views/") }
+
 
   get "/" do
   	session.clear
