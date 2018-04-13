@@ -1,4 +1,7 @@
 require './config/environment'
+require 'sinatra'
+require 'sinatra/base'
+require 'rack-flash'
 
 
 class ApplicationController < Sinatra::Base
@@ -34,6 +37,14 @@ class ApplicationController < Sinatra::Base
       def current_user
          User.find(session[:user_id])
       end
+
+      # def flash_sign_up
+      #   post '/set-flash' do
+      #     flash[:notice] = "Thanks for signing up!"
+      #   end
+      # end
+
+
     end 
 
 end
