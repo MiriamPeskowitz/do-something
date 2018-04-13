@@ -6,56 +6,56 @@ class UsersController < ApplicationController
   		if logged_in? 
   			redirect to '/actions' 
   		else
-  			erb :'citizens/signup'
+  			erb :'users/signup'
   		end 
   	end
 
-  	post '/citizens/signup' do 
+  	post '/users/signup' do 
   		if params[:username] == '' ||  params[:email] ==  "" || params[:password] == ""
   			
-        redirect to '/citizens/signup'
+        redirect to '/users/signup'
   		else
-  			@citizen = Citizen.create(:username => params[:username], :email => params[:email], :password => params[:password])
-        session[:user_id] = @citizen.id
-  			redirect to '/actions'
+  			@user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
+        session[:user_id] = @user.id
+  			redirect to '/acts'
   		end 
   	end 
 
-  	get '/citizens/login' do
+  	get '/users/login' do
     
   		if !logged_in?
-  			 erb :'citizens/login'
+  			 erb :'users/login'
   		else
-  			 redirect to '/actions'
+  			 redirect to '/acts'
   		end 
   	end 	
 
 
-   	post '/citizens/login' do
-      redirect to '/actions' if logged_in?
-      @citizen = Citizen.find_by(username: params[:username])
+   	post '/users/login' do
+      redirect to '/acts' if logged_in?
+      @user = User.find_by(username: params[:username])
       
-  	 	if @citizen && @citizen.authenticate(params[:password])
-  	 		 session[:user_id] = @citizen.id
-  		   redirect to '/actions'
+  	 	if @user && @user.authenticate(params[:password])
+  	 		 session[:user_id] = @user.id
+  		   redirect to '/acts'
   	  else
           # flash[:notice] = "You've got a lot on your mind, but we do need a valid Username and Password."
   	 	    redirect to '/'
   	  end
    	end 
 
-    get '/citizens/index' do
-        @actions = Action.all
-        erb :'citizens/index'
+    get '/users/index' do
+        @acts = Act.all
+        erb :'users/index'
     end 
 
   
-  	get '/citizens/logout' do
+  	get '/users/logout' do
   		if logged_in?
   			session.clear
-  			erb :'citizens/logout'
+  			erb :'users/logout'
   		else 
-  			redirect to '/citizens/login'
+  			redirect to '/users/login'
   		end 
   	end 
 
