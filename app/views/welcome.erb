@@ -2,26 +2,26 @@
 
 <h1> Action/Project      Do Something Every Day </h1>
 
-<p> Feel like your political actions do not add up? Keep track of all you do to make our community a better place. </p>
+<p> Feel like your political actions do not add up? Keep track of all you do to make your community/world/nation/globe a better place. </p>
 
 
 <ul>
     <% if logged_in? %>
       
-      <li><a href="/actions/new">Add a new action</a> </li>
-      <li><a href="/citizens/logout">Logout</a> </li>
+      <li><a href="/acts/new">Add a new action</a> </li>
+      <li><a href="/user/logout">Logout</a> </li>
     
     
     <% else %>
-      <li><a href="/citizens/login">Login</a> </li>
-      <li><a href="./citizens/signup">Sign up</a> </li>
+      <li><a href="/sessions/login">Login</a> </li>
+      <li><a href="./signup/signup">Sign up</a> </li>
 
     <% end %>
 </ul>
 
 <h3>What people are doing: </h3>
 <ul>
-  <% @actions.each do |action| %>
+  <% @acts.each do |action| %>
     <li>
       <%= action.title %> -- <%= action.description %>
     </li>

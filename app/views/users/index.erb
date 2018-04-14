@@ -1,11 +1,11 @@
-Is this home page? or user home page? Where is the root/home page? 
+Is this home page? or user home page? Where is the root/home page? --> welcome.erb is root 
 
 <h2>Be inspired. Persist. Look how it adds up! </h2>
 
 <ol>
 	<% @acts.each do |act| %>
 	  <li>
-	    <%= acts.title %> -- <%= acts.description %>
+	    <%= act.title %> -- <%= act.description %>
 	  </li>
 	<% end %>
 </ol>
