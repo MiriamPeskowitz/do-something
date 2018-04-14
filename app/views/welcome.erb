@@ -1,23 +1,30 @@
-<div class="container">
-  <header><img src="images/corneal-small.png" class="img-responsive main-image"></header>
-  <div class="col-md-8 col-md-offset-2">
-    <h2>Sinatra Template Default Page</h2>
 
-    <div class="content">
-      <p>Welcome to the Sinatra Template! If you're seeing this page, then everything is working
-      as expected. To get started, delete this file (<code>app/views/welcome.erb)</code> and begin adding
-      your own actions to <code>application_controller.rb</code>. For more information, see the <a href="https://github.com/thebrianemory/corneal">README</a>.</p>
-    </div>
 
-    <div class="sidebar">
-      <h3>Environment</h3>
-      <ul>
-        <li><b>Ruby:</b> <%= RUBY_VERSION %></li>
-        <li><b>Environment:</b> <%= ENV["RACK_ENV"] %></li>
-        <li><b>Server:</b> <%= @env["SERVER_SOFTWARE"] %></li>
-        <li><b>Port:</b> <%= @env["SERVER_PORT"] %></li>
-      </ul>
-    </div>
+<h1> Action/Project      Do Something Every Day </h1>
 
-  </div>
-</div>
+<p> Feel like your political actions do not add up? Keep track of all you do to make our community a better place. </p>
+
+
+<ul>
+    <% if logged_in? %>
+      
+      <li><a href="/actions/new">Add a new action</a> </li>
+      <li><a href="/citizens/logout">Logout</a> </li>
+    
+    
+    <% else %>
+      <li><a href="/citizens/login">Login</a> </li>
+      <li><a href="./citizens/signup">Sign up</a> </li>
+
+    <% end %>
+</ul>
+
+<h3>What people are doing: </h3>
+<ul>
+  <% @actions.each do |action| %>
+    <li>
+      <%= action.title %> -- <%= action.description %>
+    </li>
+  <% end %>
+</ul>
+

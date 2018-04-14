@@ -113,11 +113,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord (~> 4.2, >= 4.2.6)
+  activerecord
   bcrypt
   capybara
   database_cleaner!
   pry
+  rack
   rack-flash3 (~> 1.0, >= 1.0.5)
   rack-test
   rake
