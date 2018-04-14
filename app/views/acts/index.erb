@@ -1,0 +1,16 @@
+
+<h2>Small daily actions add up.</h2>
+<p>Welcome, <%= current_user.username %>, </p>
+
+<ol>
+	<% @actions.each do |action| %>
+	
+		<li><%= action.date %> <%= action.title %> -- <%= action.description %></li>
+	
+	<% end %>
+</ol>
+<br>
+
+<h3><a href="/actions/new">Add a new action</a></h3>
+<h3><a href="/citizens/index">See all the actions</a></h3>
+<h3><a href="/citizens/logout">Logout</a></h3>

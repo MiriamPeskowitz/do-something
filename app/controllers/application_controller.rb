@@ -2,18 +2,16 @@ require './config/environment'
 require 'sinatra'
 require 'sinatra/base'
 require 'rack-flash'
+require 'pry'
 
 
 class ApplicationController < Sinatra::Base
-
 #enable sessions
  
+ configure do
     enable :sessions
-    set :session_secret, "action_secret" 	
+    set :session_secret, "secret" 	
     use Rack::Flash
-  
-
-  configure do
     set :public_folder, 'public'
     set :views, 'app/views'
   end
@@ -26,7 +24,7 @@ class ApplicationController < Sinatra::Base
   get "/" do
   	session.clear
   	@actss = Act.all
-    erb :'index'
+    erb :index
   end
 
   helpers do

@@ -10,7 +10,6 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem "tux"
-gem 'require_all'
 gem "sinatra-flash"
 gem 'rack-flash3', '~> 1.0', '>= 1.0.5', :require => "rack-flash"
 

@@ -1,34 +1,39 @@
 class UsersController < ApplicationController
     # use Rack::Flash
+# move signups into other controllers so that this is restful 
 
-  	get '/users/signup' do
+  	# get '/users/signup' do
     
-  		if logged_in? 
-  			redirect to '/actions' 
-  		else
-  			erb :'users/signup'
-  		end 
-  	end
+  	# 	if logged_in? 
+  	# 		redirect to '/actions' 
+  	# 	else
+  	# 		erb :'users/signup'
+  	# 	end 
+  	# end
 
-  	post '/users/signup' do 
-  		if params[:username] == '' ||  params[:email] ==  "" || params[:password] == ""
+  	# post '/users/signup' do 
+  	# 	if params[:username] == '' ||  params[:email] ==  "" || params[:password] == ""
   			
-        redirect to '/users/signup'
-  		else
-  			@user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
-        session[:user_id] = @user.id
-  			redirect to '/acts'
-  		end 
-  	end 
+   #      redirect to '/users/signup'
+  	# 	else
+  	# 		@user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
+   #      session[:user_id] = @user.id
+  	# 		redirect to '/acts'
+  	# 	end 
+  	# end 
 
-  	get '/users/login' do
+    get '/users/home' d0
+
+  end 
+
+  	# get '/users/login' do
     
-  		if !logged_in?
-  			 erb :'users/login'
-  		else
-  			 redirect to '/acts'
-  		end 
-  	end 	
+  	# 	if !logged_in?
+  	# 		 erb :'users/login'
+  	# 	else
+  	# 		 redirect to '/acts'
+  	# 	end 
+  	# end 	
 
 
    	post '/users/login' do

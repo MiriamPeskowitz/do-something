@@ -1,4 +1,4 @@
-class ActsController < ApplicationController
+class ActsController< ApplicationController
 	
 
 	get '/acts' do

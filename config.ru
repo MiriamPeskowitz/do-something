@@ -1,15 +1,16 @@
-require './config/environment'
+$:.unshift '.'
+require_relative  'config/environment'
 
+
+use Rack::Static, :urls => ['/css'], :root => 'public'
+
+if ActiveRecord::Migrator.needs_migration?
+  raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
+end
+
+# use Rack::MethodOverride
+
+use UsersController
+use ActsController
+# use SessionsController 
 run ApplicationController
-
-# require './config/environment'
-
-# if ActiveRecord::Migrator.needs_migration?
-#   raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
-# end
-
-# # use Rack::MethodOverride
-
-# use UsersController
-# use ActsController
-# run ApplicationController
