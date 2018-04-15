@@ -11,5 +11,5 @@ end
 use Rack::MethodOverride
 use UsersController
 use ActsController
-# use SessionsController 
+use SessionsController 
 run ApplicationController
