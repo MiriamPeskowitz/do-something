@@ -3,9 +3,9 @@
 <p>Welcome, <%= current_user.username %>, </p>
 
 <ol>
-	<% @acts.each do |action| %>
+	<% @acts.each do |act| %>
 	
-		<li><%= action.date %> <%= action.title %> -- <%= action.description %></li>
+		<li><%= act.date %> <%= act.title %> -- <%= act.description %></li>
 	
 	<% end %>
 </ol>

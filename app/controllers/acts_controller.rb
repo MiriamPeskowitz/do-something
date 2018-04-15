@@ -1,4 +1,6 @@
-class ActsController< ApplicationController
+require './config/environment'
+
+class ActsController < ApplicationController
 	
 
 	get '/acts' do
