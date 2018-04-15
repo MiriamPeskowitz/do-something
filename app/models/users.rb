@@ -1,6 +1,3 @@
-require_relative '../../config/environment'
-require 'sinatra'
-
 class Users < ActiveRecord::Base
 	has_many :acts
 	has_secure_password

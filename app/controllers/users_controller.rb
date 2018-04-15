@@ -1,6 +1,4 @@
 
-require "rack-flash"
-
 class UsersController < ApplicationController
     use Rack::Flash
 # move signups into other controllers so that this is restful 

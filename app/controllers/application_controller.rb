@@ -1,11 +1,7 @@
-require '../config/environment'
-require 'sinatra'
-# require 'sinatra/base'
-# require 'rack-flash'
-# require 'pry'
+require_relative './config/environment'
+require 'sinatra/base'
 
 class ApplicationController < Sinatra::Base
-#enable sessions
  
  configure do
     enable :sessions
@@ -22,7 +18,7 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
   	session.clear
-  	@actss = Act.all
+  	@acts = Act.all
     erb :index
   end
 
