@@ -1,4 +1,4 @@
-require_relative './config/environment'
+require './config/environment'
 require 'sinatra/base'
 
 class ApplicationController < Sinatra::Base
@@ -6,7 +6,6 @@ class ApplicationController < Sinatra::Base
  configure do
     enable :sessions
     set :session_secret, "secret" 	
-    use Rack::Flash
     set :public_folder, 'public'
     set :views, 'app/views'
   end
@@ -18,8 +17,8 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
   	session.clear
-  	@acts = Act.all
-    erb :index
+  	@things = Thing.all
+    erb :welcome
   end
 
   helpers do

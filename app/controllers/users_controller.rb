@@ -1,6 +1,6 @@
 
 class UsersController < ApplicationController
-    use Rack::Flash
+    # use Rack::Flash
 # move signups into other controllers so that this is restful 
 
   	# get '/users/signup' do
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   	# 	end 
   	# end 
 
-    get '/users/home' d0
+    get '/users/home' do
 
   end 
 
@@ -38,12 +38,12 @@ class UsersController < ApplicationController
 
 
    	post '/users/login' do
-      redirect to '/acts' if logged_in?
+      redirect to '/things' if logged_in?
       @user = User.find_by(username: params[:username])
       
   	 	if @user && @user.authenticate(params[:password])
   	 		 session[:user_id] = @user.id
-  		   redirect to '/acts'
+  		   redirect to '/things'
   	  else
           # flash[:notice] = "You've got a lot on your mind, but we do need a valid Username and Password."
   	 	    redirect to '/'

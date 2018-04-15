@@ -1,11 +1,11 @@
-class CreateActsTable < ActiveRecord::Migration
+class CreateThingsTable < ActiveRecord::Migration
   def change
-  	create_table :acts do |t|
+  	create_table :things do |t|
       t.string	:date
       t.string  :title
       t.text  :description
       t.string :user_id
-      t.timestamps
+     
  	end
   end
 end

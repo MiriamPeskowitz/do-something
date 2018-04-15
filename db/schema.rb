@@ -13,4 +13,18 @@
 
 ActiveRecord::Schema.define(version: 20180413203322) do
 
+  create_table "things", force: :cascade do |t|
+    t.string "date"
+    t.string "title"
+    t.text   "description"
+    t.string "user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
+    t.string "user_id"
+  end
+
 end

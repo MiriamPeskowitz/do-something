@@ -1,5 +1,5 @@
-class Users < ActiveRecord::Base
-	has_many :acts
+class User < ActiveRecord::Base
+	has_many :things
 	has_secure_password
 	validates_presence_of :username, :email, :password
 end 

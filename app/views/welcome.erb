@@ -8,7 +8,7 @@
 <ul>
     <% if logged_in? %>
       
-      <li><a href="/acts/new">Add a new action</a> </li>
+      <li><a href="/thing/new">Add a new action</a> </li>
       <li><a href="/sessions/logout">Logout</a> </li>
     
     
@@ -21,9 +21,9 @@
 
 <h3>What people are doing: </h3>
 <ul>
-  <% @acts.each do |action| %>
+  <% @things.each do |thing| %>
     <li>
-      <%= action.title %> -- <%= action.description %>
+      <%= thing.title %> -- <%= thing.description %>
     </li>
   <% end %>
 </ul>

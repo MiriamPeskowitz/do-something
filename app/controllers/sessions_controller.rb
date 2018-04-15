@@ -19,9 +19,10 @@ class SessionsController < ApplicationController
 #render login form
   get '/sessions/login' do
   	if !logged_in?
-		erb :'sessions/login'
-	else 
-		redirect to '/acts'???? home? 
+	  	erb :'sessions/login'
+	  else 
+		  redirect to '/things' 
+    end 
   end
 
 #send login form 
