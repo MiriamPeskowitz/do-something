@@ -9,7 +9,7 @@ class ThingsController < ApplicationController
 			# @things = current_user.things
  			@things = User.find(session[:user_id]).things
 
-			erb :'/things' 
+			erb :'/things/index' 
 		else 
 			redirect to '/users/login'
 		end 
