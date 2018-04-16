@@ -45,8 +45,7 @@ class ThingsController < ApplicationController
 		if !logged_in?
 			redirect to '/sessions/login_form'	
 		else
-			binding.pry
-			@thing = Thing.find_by(:id => params[:id])
+			@thing = Thing.find(params[:id])
 			redirect to 'things/show'
 		end 
 	end 
@@ -57,7 +56,7 @@ class ThingsController < ApplicationController
 		# @thing = Thing.find_by_slug(params[:slug])
 		# @thing.update(params[:title], params[:date], params[:description])
 
-		@thing= Thing.find_by(:id => params[:id])
+		@thing= Thing.find(params[:id])
 		if logged_in? && @thing
 			if current_user.id == @thing.user_id
 			  erb :'thing/edit'
@@ -71,8 +70,9 @@ class ThingsController < ApplicationController
 
 
 	patch '/thing/:id' do
-		@thing = Thing.find_by_id(params[:id])
+		@thing = Thing.find(params[:id])
 		redirect to '/sessions/login_form' if !logged_in?
+		
 		if params[:description] == "" || current_user.id != @thing.user_id
 			redirect to "/thing/#{@thing.user_id}/edit"
 		else
