@@ -15,7 +15,7 @@ class SignupController < ApplicationController
       else
   			@user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
         session[:user_id] = @user.id
-  			redirect to '/things'
+  			redirect to '/sessions/login_form'
   		end 
   	end 
 

@@ -29,7 +29,8 @@ class ThingsController < ApplicationController
 		if logged_in? 
 			if current_user && params[:description] != ""
 				@thing = Thing.create(:date => params[:date], :title => params[:title], :description => params[:description], :user_id => current_user.id)
-				# redirect to "/things/#{@thing.id}"
+
+				redirect to "/things/#{@thing.id}"
 				# redirect to "/things/show"
 			else 
 				redirect to '/things'
@@ -46,25 +47,27 @@ class ThingsController < ApplicationController
 			redirect to '/sessions/login_form'	
 		else
 			@thing = Thing.find_by_id(params[:id])
-			# redirect to 'things/#{@thing.user_id}'
-			erb :"/things/show"
+			# redirect to 'things/#{@thing.id}'
+			erb :'things/show'
 		end 
 	end 
 
 # edit, sends edit form 
 	get '/things/:id/edit' do
-		
+			
 		# @thing = Thing.find_by_slug(params[:slug])
 		# @thing.update(params[:title], params[:date], params[:description])
 
 		@thing= Thing.find_by_id(params[:id]) 
-		if logged_in? && @thing.title
+	
+		if logged_in? #&& @thing.title
 		
 			if current_user.id == @thing.user_id
-				
-			  erb :'things/edit'
+
+			  erb :"things/edit"
 			else 
-		      redirect to '/things/#{@thing.user_id}'
+		      redirect to '/things'
+		      # erb :"/things/show"
 			end 
 		else
 		  redirect to '/sessions/login_form'
@@ -91,13 +94,18 @@ class ThingsController < ApplicationController
 
 #delete 
 	delete '/things/:id/delete' do
+
 		@thing = Thing.find_by_id(params[:id])
-		redirect to "/" if !logged_in?
+		# redirect to "/" if !logged_in?
+
 
 		if @thing && @thing.user_id == current_user.id
 			@thing.delete 
-			redirect to '/things/index'
+			redirect to '/things'
+		else
+			redirect to '/'	
 		end
+
 	end
 end
 

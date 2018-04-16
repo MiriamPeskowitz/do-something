@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
   get '/sessions/logout' do
     #clear the session 
     session.clear
-    redirect '/sessions/logout'
+    redirect '/sessions/goodbye'
   end
 
 end 

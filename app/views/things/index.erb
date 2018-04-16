@@ -1,12 +1,12 @@
 
 <h2>Small daily actions add up.</h2>
-<p>Welcome, <%= current_user.username %>, </p>
+<p>Welcome, <%= current_user.username %>, here's what you've been doing: <//p>
 
 <ol>
 	<% @things.each do |thing| %>
 	
-		<li><%= thing.date %> <%= thing.title %> -- <%= thing.description %>
-		ADD edit button Add delete button
+		<li><a href='/things/<%= thing.id %>'> <%= thing.date %> <%= thing.title %> -- <%= thing.description %></a>
+		
 		</li>
 		<br>
 	<% end %>
