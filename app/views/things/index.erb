@@ -5,12 +5,12 @@
 <ol>
 	<% @things.each do |thing| %>
 	
-		<li><%= thing.date %> <%= thing.title %> -- <%= act.description %></li>
+		<li><%= thing.date %> <%= thing.title %> -- <%= thing.description %></li>
 	
 	<% end %>
 </ol>
 <br>
 
-<h3><a href="/acts/new">Add a new act.</a></h3>
+<h3><a href="/thing/new">Add a new act.</a></h3>
 <h3><a href="/users/index">See all the acts</a></h3>
 <h3><a href="/sessions/logout">Logout</a></h3>
