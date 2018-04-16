@@ -14,7 +14,7 @@
   /* --- Welcome Page Styles --- */
   body {
     background-color: lightblue;
-    color: #333;
+    color: #aed309;
     font-family: Sans-Serif;
     line-height: 18px;
   }
@@ -30,6 +30,17 @@
     width: 85%;
   }
 
+  #top {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/22/Trump-WomensMarch_2017-1060242_%2832409721756%29.jpg");
+  }
+  #doing {
+    background-color:#c3cee2;
+    border: 2px solid black;
+  }
+  
+  .color2 {
+    color: #435066;
+  }
   h1 {
     font-size: 36px;
     line-height: 54px;

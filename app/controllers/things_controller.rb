@@ -45,8 +45,9 @@ class ThingsController < ApplicationController
 		if !logged_in?
 			redirect to '/sessions/login_form'	
 		else
+			binding.pry
 			@thing = Thing.find_by(:id => params[:id])
-			erb :'things/show'
+			redirect to 'things/show'
 		end 
 	end 
 

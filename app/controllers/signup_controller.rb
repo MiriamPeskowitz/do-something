@@ -10,11 +10,12 @@ class SignupController < ApplicationController
 
   	post '/signup/signup_form' do 
   		if params[:username] == '' ||  params[:email] ==  "" || params[:password] == ""
-			redirect to '/signup/signup_form'
-        else
+			  redirect to '/signup/signup_form'
+      # add flash notice
+      else
   			@user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
-        	session[:user_id] = @user.id
-  			redirect to '/things/index'
+        session[:user_id] = @user.id
+  			redirect to '/things'
   		end 
   	end 
 
