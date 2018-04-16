@@ -1,27 +1,11 @@
 class SessionsController < ApplicationController
 
-
-# to put the login/signup here, in Sesssions 
-# 	get '/registrations/signup' do
-#     erb :'/registrations/signup'
-#   end
-
-#   post '/registrations' do
-#     puts params
-#     @user = User.new(name: params["name"], email: params["email"], password: params[:password])
-#     @user.save
-#     session[:id] = @user.id
-
-#     #user info into params hash, create new user, sign them in, redicret
-#     redirect '/users/home'
-#   end
-
 #render login form
   get '/sessions/login' do
   	if !logged_in?
 	  	erb :'sessions/login'
 	  else 
-		  redirect to '/things' 
+		  redirect to '/things/' 
     end 
   end
 
@@ -41,3 +25,19 @@ class SessionsController < ApplicationController
   end
 
 end 
+
+
+# to put the login/signup here, in Sesssions 
+#   get '/registrations/signup' do
+#     erb :'/registrations/signup'
+#   end
+
+#   post '/registrations' do
+#     puts params
+#     @user = User.new(name: params["name"], email: params["email"], password: params[:password])
+#     @user.save
+#     session[:id] = @user.id
+
+#     #user info into params hash, create new user, sign them in, redicret
+#     redirect '/users/home'
+#   end
