@@ -5,12 +5,13 @@
 <ol>
 	<% @things.each do |thing| %>
 	
-		<li><%= thing.date %> <%= thing.title %> -- <%= thing.description %></li>
-	
+		<li><%= thing.date %> <%= thing.title %> -- <%= thing.description %>
+		ADD edit button Add delete button
+		</li>
+		<br>
 	<% end %>
 </ol>
-<br>
+
 
 <h3><a href="/things/new">Add something new</a></h3>
-<h3><a href="/users/index">See all your actions</a></h3>
 <h3><a href="/sessions/logout">Logout</a></h3>
