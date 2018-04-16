@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 #render login form
   get '/sessions/login' do
   	if !logged_in?
-	  	erb :'sessions/login'
+	  	erb :'sessions/login_form'
 	  else 
 		  redirect to '/things/' 
     end 
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     #receive Post request, code to grab users info from params hash, match that info against the etnries in db, and if ===, sign in user
     @user = User.find_by(:email => params["email"], :password => params[:password])
     session[:user_id] = @user.id
-    redirect '/users/home'
+    redirect '/users/index'
   end
 
 #end session/logout

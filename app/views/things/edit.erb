@@ -1,12 +1,12 @@
 
 <h2>Edit</h2>
 
-<form action="/acts/<%= @act.id %>" method="POST">
+<form action="/things/<%= @thing.id %>" method="POST">
   
   <input type="hidden" name="_method" value="PATCH">
   
   <textarea name="description" id="description">
-  	<%= @act.description %>
+  	<%= @thing.description %>
   	</textarea>
 
   <input type="submit" name="Edit Description" value="submit">
