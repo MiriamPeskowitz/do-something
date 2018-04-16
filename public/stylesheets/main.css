@@ -14,7 +14,7 @@
   /* --- Welcome Page Styles --- */
   body {
     background-color: lightblue;
-    color: #aed309;
+    color: #ccc;
     font-family: Sans-Serif;
     line-height: 18px;
   }
@@ -35,12 +35,12 @@
   }
   
   #doing {
-    background-color:#c3cee2;
+    background-color:#cccc;
     border: 2px solid black;
   }
   
   .color2 {
-    color: #435066;
+    color: #ccc;
   }
   h1 {
     font-size: 36px;
