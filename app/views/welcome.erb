@@ -10,18 +10,18 @@
     <% if logged_in? %>
       
       <li><a href="/things/new">What did you do today? </a> </li>
-      <li><a href="/sessions/logout">Logout</a> </li>
+      <li><a href="/users/logout">Logout</a> </li>
     
     
     <% else %>
-      <li><a href='/sessions/login_form'>Login</a> </li>
-      <li><a href="/signup/signup_form">Sign up</a> </li>
+      <li><a href='/users/login_form'>Login</a> </li>
+      <li><a href="/users/signup_form">Sign up</a> </li>
 
     <% end %>
 </ul>
 
 <div id="doing">
-<h3 class="color2"> What are people doing? </h3>
+<h3> What are people doing? </h3>
 <ul>
   <% @things.each do |thing| %>
     <li>

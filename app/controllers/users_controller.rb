@@ -1,6 +1,41 @@
 
 class UsersController < ApplicationController
     # use Rack::Flash
+
+#render login form
+  get '/users/login_form' do
+    if !logged_in?
+      erb :'users/login_form'
+    else 
+      redirect to '/things' #??
+       #flash notice you're already logged in 
+    end 
+  end
+
+
+#submit login form 
+  post '/users/login' do
+    #receive Post request, code to grab users info from params hash, match that info against the etnries in db, and if ===, sign in user
+    # @user = User.find_by(:username => params[:username], :email => params[:email], :password => params[:password])
+    # session[:user_id] = @user.id
+    # redirect '/things'
+    # @user = User.find_by(:username => params[:username])
+    @user = User.create(:username => params[:username], :email => params[:email], :password => password)
+    if @user != nil && @user.password == params[:password]
+       session[:user_id] = @user.id
+       binding.pry
+       redirect to '/things'
+    else
+      redirect to '/'
+      # ?add flash notice
+    end
+  end
+
+  get '/users/logout' do
+    #clear the session 
+    session.clear
+    redirect '/users/goodbye'
+  end
 end
 
   #  	post '/users/login' do

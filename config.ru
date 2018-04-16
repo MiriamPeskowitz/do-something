@@ -7,8 +7,6 @@ end
 use Rack::MethodOverride
 
 
-use SessionsController
-use SignupController
 use UsersController
 use ThingsController
 run ApplicationController
