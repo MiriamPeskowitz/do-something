@@ -3,12 +3,12 @@ Is this home page? or user home page? Where is the root/home page? --> welcome.e
 <h2>Be inspired. Persist. Look how it adds up! </h2>
 
 <ol>
-	<% @acts.each do |act| %>
+	<% @things.each do |thing| %>
 	  <li>
-	    <%= act.title %> -- <%= act.description %>
+	    <%= thing.title %> -- <%= thing.description %>
 	  </li>
 	<% end %>
 </ol>
 
-<h3><a href="/acts/new">Add a new action</a></h3>
+<h3><a href="/things/new">Add a new action</a></h3>
 <h3><a href="/sessions/logout">Log out </a></h3>
