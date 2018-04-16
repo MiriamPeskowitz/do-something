@@ -1,21 +1,21 @@
 require 'pry'
 class ThingsController < ApplicationController
 	
-	# get '/things' do	
-	#   erb :"index"
-	# end 
- 
 #index all actions for the current user
 	get '/things' do
 		if logged_in?
-			@things = current_user.things
-			erb :'things/index' 
+			# @user = User.find_by_id(params[:id])
+			# @things = Things.find_by()
+			# @things = current_user.things
+ 			@things = User.find(session[:user_id]).things
+ 		
+			erb :'/things' 
 		else 
 			redirect to '/sessions/login_form'
 		end 
 	end 
-
-#send form for new action
+ # session[:user_id] = @user.id
+#get form for new action
 	get '/things/new' do
 		if logged_in? 
 			erb :'things/new'
@@ -24,14 +24,13 @@ class ThingsController < ApplicationController
 		end 
 	end
 
-#collect data for new action
+#send data for new action
 	post '/things' do
 		if logged_in? 
 			if current_user && params[:description] != ""
 				@thing = Thing.create(:date => params[:date], :title => params[:title], :description => params[:description], :user_id => current_user.id)
 
 				redirect to "/things/#{@thing.id}"
-				# redirect to "/things/show"
 			else 
 				redirect to '/things'
 			end
@@ -47,7 +46,6 @@ class ThingsController < ApplicationController
 			redirect to '/sessions/login_form'	
 		else
 			@thing = Thing.find_by_id(params[:id])
-			# redirect to 'things/#{@thing.id}'
 			erb :'things/show'
 		end 
 	end 
@@ -94,14 +92,12 @@ class ThingsController < ApplicationController
 
 #delete 
 	delete '/things/:id/delete' do
-
 		@thing = Thing.find_by_id(params[:id])
 		# redirect to "/" if !logged_in?
-
-
 		if @thing && @thing.user_id == current_user.id
 			@thing.delete 
-			redirect to '/things'
+			redirect to 'sessions/login_form'
+			# redirect to "/things/#{@thing.id}"
 		else
 			redirect to '/'	
 		end

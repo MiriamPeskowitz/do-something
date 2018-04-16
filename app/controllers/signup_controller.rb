@@ -2,7 +2,7 @@ class SignupController < ApplicationController
 
     get '/signup/signup_form' do
   		if logged_in? 
-  			redirect to '/things/index' 
+  			redirect to '/' # how do I respond -- you're already logged in, then what? 
   		else
   			erb :'signup/signup_form'
   		end 
@@ -15,7 +15,7 @@ class SignupController < ApplicationController
       else
   			@user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
         session[:user_id] = @user.id
-  			redirect to '/sessions/login_form'
+  			erb :'/sessions/login_form'
   		end 
   	end 
 
