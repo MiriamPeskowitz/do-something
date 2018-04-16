@@ -5,12 +5,12 @@ class SessionsController < ApplicationController
   	if !logged_in?
 	  	erb :'sessions/login_form'
 	  else 
-		  redirect to '/things/' 
+		  redirect to '/things/index' 
     end 
   end
 
 #send login form 
-  post '/sessions' do
+  post '/sessions/login_form' do
     #receive Post request, code to grab users info from params hash, match that info against the etnries in db, and if ===, sign in user
     @user = User.find_by(:email => params["email"], :password => params[:password])
     session[:user_id] = @user.id

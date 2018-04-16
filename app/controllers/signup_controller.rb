@@ -1,14 +1,14 @@
 class SignupController < ApplicationController
 
-    get '/sign_up' do
+    get '/signup/signup_form' do
   		if logged_in? 
   			redirect to '/things/index' 
   		else
-  			erb :'signup_form'
+  			erb :'signup/signup_form'
   		end 
   	end
 
-  	post '/sign_up' do 
+  	post '/signup/signup_form' do 
   		if params[:username] == '' ||  params[:email] ==  "" || params[:password] == ""
 			redirect to '/signup/signup_form'
         else
