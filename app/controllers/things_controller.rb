@@ -29,7 +29,7 @@ class ThingsController < ApplicationController
 		if logged_in? 
 			if current_user && params[:description] != ""
 				@thing = Thing.create(:date => params[:date], :title => params[:title], :description => params[:description], :user_id => current_user.id)
-				redirect to "/things/#{@thing.user_id}"
+				redirect to "/things/#{@thing.id}"
 			else 
 				redirect to '/things'
 			end
@@ -44,9 +44,9 @@ class ThingsController < ApplicationController
 		if !logged_in?
 			redirect to '/sessions/login_form'	
 		else
-			@thing = Thing.find_by_id(params[:user_id])
-			redirect to 'things/#{@thing.user_id}'
-			# erb :"/things/show"
+			@thing = Thing.find_by_id(params[:id])
+			# redirect to 'things/#{@thing.user_id}'
+			erb :"/things/show"
 		end 
 	end 
 
@@ -56,7 +56,7 @@ class ThingsController < ApplicationController
 		# @thing = Thing.find_by_slug(params[:slug])
 		# @thing.update(params[:title], params[:date], params[:description])
 
-		@thing= Thing.find(params[:id])
+		@thing= Thing.find_by_id(params[:id])
 		if logged_in? && @thing
 			if current_user.id == @thing.user_id
 			  erb :'thing/edit'
@@ -69,26 +69,31 @@ class ThingsController < ApplicationController
 	end 
 
 # take in edited data
-	patch '/thing/:id' do
-		@thing = Thing.find(params[:id])
+	patch '/things/:id' do
+		@thing = Thing.find_by_id(params[:id])
 		redirect to '/sessions/login_form' if !logged_in?
 
 		if params[:description] == "" || current_user.id != @thing.user_id
 			redirect to "/thing/#{@thing.user_id}/edit"
 		else
-		    @thing.update(:description => params[:description])
-		    redirect to "/things/#{@thing.user_id}"
+		    # @thing.update(:description => params[:description])
+		    # need more code 
+		    @thing.date = params[:date]
+		    @thing.title = params[:title]
+		    @thing.description = params[:description]
+		    @thing.saves
+		    redirect to "/things/#{@thing.id}"
 		end 
 	end 
 
 #delete 
-	delete '/thing/:id' do
-		@thing = Thing.find_by_id(params[:user_id])
+	delete '/things/:id/delete' do
+		@thing = Thing.find_by_id(params[:id])
 		redirect to "/" if !logged_in?
 
 		if @thing && @thing.user_id == current_user.id
 			@thing.delete 
-			redirect to '/'
+			redirect to '/things/index'
 		end
 	end
 end
