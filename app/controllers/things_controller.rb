@@ -56,12 +56,13 @@ class ThingsController < ApplicationController
 		# @thing = Thing.find_by_slug(params[:slug])
 		# @thing.update(params[:title], params[:date], params[:description])
 
-		@thing= Thing.find_by_id(params[:id])
-		if logged_in? && @thing
+		@thing= Thing.find_by_id(params[:id]) 
+		if logged_in? 
+		
 			if current_user.id == @thing.user_id
-			  erb :'thing/edit'
+			  erb :edit
 			else 
-		      redirect to '/thing'
+		      redirect to '/things/show'
 			end 
 		else
 		  redirect to '/sessions/login_form'
@@ -77,11 +78,11 @@ class ThingsController < ApplicationController
 			redirect to "/thing/#{@thing.user_id}/edit"
 		else
 		    # @thing.update(:description => params[:description])
-		    # need more code 
+		   
 		    @thing.date = params[:date]
 		    @thing.title = params[:title]
 		    @thing.description = params[:description]
-		    @thing.saves
+		    @thing.save
 		    redirect to "/things/#{@thing.id}"
 		end 
 	end 
