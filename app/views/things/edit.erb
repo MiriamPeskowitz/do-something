@@ -2,12 +2,11 @@
 <h2>Edit</h2>
 
 <form action="/things/<%= @thing.id %>" method="POST">
-  
   <input type="hidden" name="_method" value="PATCH">
-  
+  <label type="date">Date</label>
   <input type="date" name="date">
-  <input type="text" name="title">
-  <input type="textarea" name="description" id="description">
+  <input type="text" name="title"><%= @thing.title %> </input>
+  <type="textarea" name="description" id="description">
   	<%= @thing.description %>
   	</textarea>
 
