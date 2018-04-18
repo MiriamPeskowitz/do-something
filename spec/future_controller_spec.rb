@@ -24,8 +24,9 @@ describe "Futures Controller" do
 		it "'/futures/new' redirects to '/futures/:id' after form submission"
 			@future1 = Future.create(:title => "Do some investigating" )
 
+		end 
 
-
+		describe ...
 	end 
 end
 
