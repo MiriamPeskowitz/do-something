@@ -10,7 +10,7 @@ class ThingsController < ApplicationController
 	end 
 
 	post 'future_acts' do
-		@future_acts = Future_Acts.create(:title => params[:title])x
+		@future_acts = Future_Acts.create(:title => params[:title])
 	end 
 
 end 
