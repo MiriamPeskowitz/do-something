@@ -1,7 +1,7 @@
 <br>
 
 	<label for="date">Date</label>
-	<input type="text" name="date">
+	<input type="date" name="date">
 	
 	<br>
 
