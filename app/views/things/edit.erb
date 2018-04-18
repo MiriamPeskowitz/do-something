@@ -3,13 +3,22 @@
 
 <form action="/things/<%= @thing.id %>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
-  <label type="date">Date</label>
-  <input type="date" name="date">
-  <input type="text" name="title"><%= @thing.title %> </input>
-  <type="textarea" name="description" id="description">
-  	<%= @thing.description %>
-  	</textarea>
-
-  <input type="submit" name="edit" value="submit">
+ 
+ 	<label>Date:</label> 
+  	<br>
+  <textarea rows="1" cols="25" maxlength="50" name="thing[date]" id="thing_date"><%= @thing.date %></textarea>
+	<br>
+    <br>
+  <label>Title:</label> 
+  	<br>
+  <textarea rows="4" cols="50" maxlength="50" name="thing[title]" id="thing_title"><%= @thing.title %></textarea>
+	<br>
+    <br>
+  <label>Description:</label>
+  	<br>  
+  <textarea rows="4" cols="50" maxlength="50" name="thing[description]" id="thing_description"><%= @thing.description %></textarea>
+	<br>
+	<br>
+  <input type="submit" name="edit" value="Submit">
   
 </form>
