@@ -1,21 +1,21 @@
 
 
+
 <h1>Do Something Journal </h1>
 
-<h3>Feel like your political and community actions are not adding up?</h3>
-</h3>Keep track of all you do to make your community/world/nation/globe a better place. </h3>
+</h3>Keep track of all you do to make your community/world/nation/globe a better place. See it add up. </h3>
 
 
-<ul>
+<ul class="navbar">
     <% if logged_in? %>
       
-      <li><a href="/things/new">What did you do today? </a> </li>
-      <li><a href="/users/logout">Logout</a> </li>
+      <li class="nav"><a href="/things/new">What did you do today? </a> </li>
+      <li class="nav"><a href="/users/logout">Logout</a> </li>
     
     
     <% else %>
-      <li><a href='/users/login'>Login</a> </li>
-      <li><a href="/users/signup">Sign up</a> </li>
+      <li class="nav"><a href='/users/login'>Login</a> </li>
+      <li class="nav"><a href="/users/signup">Sign up</a> </li>
 
     <% end %>
 </ul>
@@ -25,8 +25,7 @@
 <ul>
   <% @things.each do |thing| %>
     <li>
-      <%= thing.title %>
-      <%= thing.description %>
+      <%= thing.title %> -- <%= thing.description %>
     </li>
   <% end %>
 </ul>
