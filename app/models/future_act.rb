@@ -1,3 +1,3 @@
-class FutureAct < ActiveRecord::Base
+class Future < ActiveRecord::Base
 	belongs_to :User
 end 

@@ -1,10 +1,10 @@
 <h2>Today I: </h2>
 
-<ul>
-	<li><%= @thing.title %></li>
-	<li><%= @thing.description %></li>
-</ul>
-<%= @thing.id %>
+<ol>
+	<li><%= @thing.title %> *** <%= @thing.description %></li>
+	
+</ol>
+
 <h3> <a href="/things/<%= @thing.id %>/edit">Edit</a></h3>
 <h3> <a href="/things/new">Add another</a></h3>
 <h3> <a href="/things">See all</a></h3>

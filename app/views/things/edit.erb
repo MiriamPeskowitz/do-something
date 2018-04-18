@@ -5,9 +5,12 @@
   
   <input type="hidden" name="_method" value="PATCH">
   
-  <textarea name="description" id="description">
+  <input type="date" name="date">
+  <input type="text" name="title">
+  <input type="textarea" name="description" id="description">
   	<%= @thing.description %>
   	</textarea>
 
-  <input type="submit" name="Edit Description" value="submit">
+  <input type="submit" name="edit" value="submit">
+  
 </form>

@@ -1,0 +1,15 @@
+<h4>futures index </h4>
+<h3>Next, I want to:</h3>
+	<ol>
+	
+		<% @futures.each do |future| %>
+			<li> <%= future.title %> 
+			<form>
+				<form action="futures/<%= @futures.id %>/delete" method="post">
+  				<input id="hidden" type="hidden" name="_method" value="delete">
+  				<button type="submit">Done</button>
+			</form>
+			</li>
+			<br>
+		<% end %>
+	</ol>

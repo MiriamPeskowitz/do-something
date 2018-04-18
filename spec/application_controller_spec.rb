@@ -4,7 +4,6 @@ def app
   ApplicationController
 end
 
-Started creating tests -- it's hard! 
 
 describe ApplicationController do
   it "clears the session, if it exists" do
