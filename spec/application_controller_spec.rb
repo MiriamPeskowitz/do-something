@@ -15,13 +15,6 @@ describe "ApplicationController" do
       expect(page.body).to include("Journal")
     end
   end 
-
-
-
-
-  # 
-
-
 end 
 
 
