@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   get '/users/signup' do
     if !logged_in?
-      erb :'users/signup'#, locals: {message: "Please sign up before you sign in"}
+      erb :'users/signup'
     else
       redirect to '/things'
     end
@@ -30,7 +30,8 @@ class UsersController < ApplicationController
 
   get '/users/login' do 
     if !logged_in?
-      erb :'users/login'
+      # flash[:notice] = "Sign up first"
+      erb :'users/login'  #, locals: {message: "Please sign up before you sign in"}
     else
       redirect to "/things"
     end

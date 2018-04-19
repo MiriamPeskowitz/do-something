@@ -1,4 +1,6 @@
+require 'sinatra/flash'
 require 'pry'
+
 class ThingsController < ApplicationController
 	
 #index all actions for the current user
@@ -8,6 +10,7 @@ class ThingsController < ApplicationController
 
 			erb :'/things/index' 
 		else 
+			
 			redirect to '/users/login'
 		end 
 	end 

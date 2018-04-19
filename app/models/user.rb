@@ -2,8 +2,11 @@ class User < ActiveRecord::Base
 	has_many :things
 	has_many :futures
 	has_secure_password
-	validates_presence_of :username, :email, :password {:length => (:minimum => 8)}
-	# validates password, :presence => true, :length => (:minimum => 8)
+	validates_presence_of :username, :email, :password
+	validates :password, length: { minimum: 8, maximum: 20}
+
+	# validates :password, :presence => true, :length => (:minimum => 8)
+	# validates :username, :presence, :uniquness
 
 	def capitalize(username)
 		username.capitalize
