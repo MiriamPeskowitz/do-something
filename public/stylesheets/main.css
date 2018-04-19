@@ -8,12 +8,13 @@
 
   html, body {
     height: 100%;
-    width: 100%;
+    width: 95%;
   }
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    background-color: black;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/22/Trump-WomensMarch_2017-1060242_%2832409721756%29.jpg");
     color: darkgray;
     font-family: Sans-Serif;
     line-height: 18px;
