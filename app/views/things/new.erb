@@ -1,18 +1,15 @@
-<h3>Today <%= current_user.username %> did: <h3>
+<h3>Hey <%= current_user.username.capitalize %>! Add today's act. <h3>
 
 <form action="/things" method="POST">
 
 	<label for="date">Date</label>
 	<input type="date" name="date">
-      <br>
-	  <br>
+     <br>
 	<label for="title">Title</label>
-	<input type="text" name="title">
-	  <br>
+	<textarea rows="2" cols="50" maxlength="50" name="title" id= "title" ></textarea>	
 	  <br>
 	<label for="description">Description</label>		
-	<textarea rows="1" cols="25" maxlength="50" name="description" id= "description" ></textarea>	
-	  <br>
+	<textarea rows="4" cols="50" maxlength="100" name="description" id= "description" ></textarea>	
 	  <br>
  	<input type="submit" value="Well done!">
 

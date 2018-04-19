@@ -1,12 +1,13 @@
 
 <h2>Small daily actions add up.</h2>
+<br>
 
 <% if @things.count == 0 %>
 	<h3?>What did you do today? </3>
 
 <% else %>
 
-	<h3>Welcome, <%= current_user.username %>, here's what you've been doing: </h3>
+	<h3>Welcome, <%= current_user.username.capitalize %>, here's what you've been doing: </h3>
 
 	<ol>
 		<% @things.each do |thing| %>
@@ -24,4 +25,3 @@
 <h3><a href="/things/new">Add something new</a></h3>
 <h3><a href="/users/logout">Logout</a></h3>
 
-? should this logic be moved to helper/model, or is it okay to leav in the view? 
