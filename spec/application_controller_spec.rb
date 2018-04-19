@@ -5,14 +5,14 @@ describe "ApplicationController" do
   it "clears the session, if it exists" do
     get '/'
     expect(last_response.status).to eq(200)
-    expect(last_response.body).to include("Welcome")
+    expect(last_response.body).to include("Journal")
   end
 # how would I test that the session is cleared?     
 
   describe "get '/' " do
     it "renders the welcome page" do
       visit '/'
-      expect(page.body).to include("Welcome!")
+      expect(page.body).to include("Journal")
     end
   end 
 

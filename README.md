@@ -12,6 +12,10 @@ Call up in Browser-- heroku?
 ###
 Contributors Guide 
 Want to contribute? I'm honored. Send me some Github issues, whether it's bugs you've found (and how you found them), design/UX/UI features that can make DoSomethingNow easier to use. Have something else? Send me a pull request. 
+
+Next features: 
+	-- A way to share on Twitter, etc. 
+
 ###
 MIT License
 Copyright 2018 <COPYRIGHT HOLDER>

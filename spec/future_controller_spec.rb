@@ -21,37 +21,37 @@ describe "Futures Controller" do
 			expect(page.current_path).to eq ("futures/#{@future.id}")
 		end 
 
-		it "'/futures/new' redirects to '/futures/:id' after form submission"
+		it "'/futures/new' redirects to '/futures/:id' after form submission" do
 			@future1 = Future.create(:title => "Do some investigating" )
 
 		end 
 
-		describe ...
+		
 	end 
 end
 
-	describe Futures do
-		describe "#.... " do 
-			it "takes in form data/params"
-		end 
-	end 
+	# describe Futures do
+	# 	describe "#.... " do 
+	# 		it "takes in form data/params"
+	# 	end 
+	# end 
 
-	describe "#generate index page" do
-		it "generates an index.html file" do
-			xxxx = xxxx.new("xxx")
+	# describe "#generate index page" do
+	# 	it "generates an index.html file" do
+	# 		xxxx = xxxx.new("xxx")
 
-			expect(file).to exist(".../index")
-		end
-	end 
-
-
+	# 		expect(file).to exist(".../index")
+	# 	end
+	# end 
 
 
 
 
-end 
+
+
+ 
 
 # on the index, it adds a form: 
-what it does --design 
-how it works -- code 
+# what it does --design 
+# how it works -- code 
 
