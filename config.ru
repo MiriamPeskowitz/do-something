@@ -9,4 +9,5 @@ use Rack::MethodOverride
 
 use UsersController
 use ThingsController
+use FuturesController
 run ApplicationController

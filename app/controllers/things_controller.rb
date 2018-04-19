@@ -41,7 +41,7 @@ class ThingsController < ApplicationController
 
 
 #show page for the new action
-	get '/things/:id' do
+	get '/things/:id' do 
 		if !logged_in?
 			redirect to '/users/login'	
 		else
@@ -78,13 +78,13 @@ class ThingsController < ApplicationController
 		redirect to '/users/login' if !logged_in?
 
 		if params[:description] == "" || current_user.id != @thing.user_id
-			redirect to "/things/#{@thing.user_id}/edit"
+			redirect to "/things/#{@thing.d}/edit"
 		else
 		    # @thing.update(:description => params[:description])
 		   
-		    @thing.date = params[:date]
-		    @thing.title = params[:title]
-		    @thing.description = params[:description]
+		    @thing.date = params[:thing][:date]
+		    @thing.title = params[:thing][:title]
+		    @thing.description = params[:thing][:description]
 		    @thing.save
 		    redirect to "/things/#{@thing.id}"
 		end 

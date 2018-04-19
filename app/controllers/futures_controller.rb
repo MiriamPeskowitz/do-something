@@ -1,14 +1,14 @@
-class ThingsController < ApplicationController
+class FuturesController < ApplicationController
 
 #index
-	get '/future_acts' do
-		@futures = FutureAct.all  #FutureActs.create(params[:future_act][]["title"])
+	get '/futures' do
+		@futures = Future.create(params[:future_act][]["title"])
 		erb :'things/index'
 	end 
 
 	get '/futures/new' do 
 		if logged_in? 
-			erb :'future_acts/new'
+			erb :'futures/new'
 		else 
 			redirect to '/users/login'	
 		end 
