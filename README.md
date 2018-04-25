@@ -1,27 +1,21 @@
-# do-something-now
-(in process)
-###
-Description
-A Sinatra app that lets a user keep track of daily community/political actions. Because it's easy to lose track of how things add up.
+# Do-Something
 
-###
-Instructions/Install 
+## Description
+A Sinatra app that lets a user keep track of daily community/political actions. Because it's easy to lose track of how things add up. For more info, see https://miriampeskowitz.github.io/do-something_a_sinatra_app
 
-Call up in Browser-- heroku? 
+## Instructions/Install 
 
-###
-Contributors Guide 
-Want to contribute? I'm honored. Send me some Github issues, whether it's bugs you've found (and how you found them), design/UX/UI features that can make DoSomethingNow easier to use. Have something else? Send me a pull request. 
+URL coming soon. Until then it can be forked and run on localhost. 
 
-Next features: 
+## Contributors Guide 
+Want to contribute? Send me some Github issues, whether it's bugs you've found (and how you found them), design/UX/UI features that can make DoSomethingNow easier to use.  
+
+## Next features: 
 	-- A way to share on Twitter, etc. 
-	-- Make a user profile page.
-	-- Add Next feature, which lets a user list 3 things they want to do next. It should appear on their thing/index page. 
+	-- A 3-item to-do list where a user can store the next few things they want to do.
 	
 
-
-###
-MIT License
+## MIT License
 Copyright 2018 <COPYRIGHT HOLDER>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
