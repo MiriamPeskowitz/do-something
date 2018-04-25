@@ -3,7 +3,7 @@ require 'pry'
 
 class ThingsController < ApplicationController
 	
-#index all actions for the current user
+
 	get '/things' do
 
 		if logged_in?
@@ -16,7 +16,7 @@ class ThingsController < ApplicationController
 		end 
 	end 
 
-#get form for new action
+
 	get '/things/new' do
 		if logged_in? 
 			erb :'things/new'
@@ -26,7 +26,7 @@ class ThingsController < ApplicationController
 		end 
 	end
 
-#send data for new action
+
 	post '/things' do
 		if logged_in? 
 			if current_user && params[:description] != ""
@@ -42,7 +42,7 @@ class ThingsController < ApplicationController
 	end 
 
 
-#show page for the new action
+
 	get '/things/:id' do 
 		if !logged_in?
 			redirect to '/users/login'	
@@ -52,7 +52,7 @@ class ThingsController < ApplicationController
 		end 
 	end 
 
-# edit, sends edit form 
+
 	get '/things/:id/edit' do
 
 		@thing= Thing.find_by_id(params[:id]) 
@@ -71,7 +71,7 @@ class ThingsController < ApplicationController
 		end 
 	end 
 
-# take in edited data
+
 	patch '/things/:id' do
 		@thing = Thing.find_by_id(params[:id])
 		redirect to '/users/login' if !logged_in?
@@ -88,7 +88,7 @@ class ThingsController < ApplicationController
 		end 
 	end 
 
-#delete 
+
 	delete '/things/:id/delete' do
 		@thing = Thing.find_by_id(params[:id])
 		# redirect to "/" if !logged_in?

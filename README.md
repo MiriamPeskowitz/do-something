@@ -15,6 +15,10 @@ Want to contribute? I'm honored. Send me some Github issues, whether it's bugs y
 
 Next features: 
 	-- A way to share on Twitter, etc. 
+	-- Make a user profile page.
+	-- Add Next feature, which lets a user list 3 things they want to do next. It should appear on their thing/index page. 
+	
+
 
 ###
 MIT License
