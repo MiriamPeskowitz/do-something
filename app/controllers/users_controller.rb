@@ -1,14 +1,11 @@
 
 class UsersController < ApplicationController
-    # use Rack::Flash
-  # get '/users/:slug' do
-  #   @user = User.find_by_slug(params[:slug])
-  #   erb :'users/show'
-  # end
-
+ helpers Sinatra::RedirectWithFlash  
 
   get '/users/signup' do
+   
     if !logged_in?
+
       erb :'users/signup'
     else
       redirect to '/things'
@@ -17,11 +14,13 @@ class UsersController < ApplicationController
 
   post '/users/signup' do 
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
+      flash[:message] = "Please sign in."
       redirect to '/users/signup'
     else
       @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
       @user.save
       session[:user_id] = @user.id
+      flash[:message] = "Successful signup and login."
       redirect to '/things'
     end
   end
@@ -30,10 +29,10 @@ class UsersController < ApplicationController
 
   get '/users/login' do 
     if !logged_in?
-      # flash[:notice] = "Sign up first"
+      # session[:try_again_message] = "Please sign up first."
       erb :'users/login'  #, locals: {message: "Please sign up before you sign in"}
     else
-      redirect to "/things"
+      redirect to "/things", :flash => "Success, you are logged in."
     end
   end
 

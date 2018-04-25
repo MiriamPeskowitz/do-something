@@ -5,6 +5,7 @@ class ThingsController < ApplicationController
 	
 #index all actions for the current user
 	get '/things' do
+
 		if logged_in?
  			@things = User.find(session[:user_id]).things
 
@@ -20,6 +21,7 @@ class ThingsController < ApplicationController
 		if logged_in? 
 			erb :'things/new'
 		else 
+			flash[:"please log in."]
 			redirect to '/users/login'	
 		end 
 	end

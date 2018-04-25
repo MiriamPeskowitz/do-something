@@ -1,20 +1,24 @@
 require './config/environment'
 require 'sinatra/base'
+require 'sinatra/flash'
+require 'rack-flash'
+require 'sinatra/redirect_with_flash'
+  
 
 class ApplicationController < Sinatra::Base
  
  configure do
     enable :sessions
+    use Rack::Flash
     set :session_secret, "secret" 	
     set :public_folder, 'public'
     set :views, 'app/views'
+   
   end
 
 # question, line 13 could be this, why not?  set :views, Proc.new { File.join(root, "../views/") }
 #   set :views, Proc.new { File.join(root, "../views/") }
-#  register Sinatra::Twitter::Bootstrap::Assets
-
-
+ 
   get "/" do
   	session.clear
   	@things = Thing.all

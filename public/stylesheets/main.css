@@ -134,8 +134,24 @@
     margin-top: 20px;
     padding-top: 20px;
   }
-}
 
+
+  a:link {
+    color: black;
+  }
+
+  a:visited {
+    color: darkgray;
+  }
+
+  a:hover {
+    color: lightgray;
+  }
+
+  a:selected {
+    color: pink;
+  }
+}
 @media screen and (max-width: 600px) {
   .wrapper {
     -moz-box-shadow: none;
