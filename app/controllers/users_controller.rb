@@ -1,11 +1,10 @@
 
 class UsersController < ApplicationController
- # helpers Sinatra::RedirectWithFlash  
+  helpers Sinatra::RedirectWithFlash  
 
   get '/users/signup' do
    
     if !logged_in?
-
       erb :'users/signup'
     else
       redirect to '/things'
@@ -14,6 +13,7 @@ class UsersController < ApplicationController
 
   post '/users/signup' do 
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
+      session[:notice] = "please sign up"
       redirect to '/users/signup'
     else
       @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
@@ -27,10 +27,11 @@ class UsersController < ApplicationController
 
   get '/users/login' do 
     if !logged_in?
-      # session[:try_again_message] = "Please sign up first."
+      session[:notice] = "Please sign up first."
       erb :'users/login' 
     else
-      redirect to "/things", :flash => "Success, you are logged in."
+      session[:flash] = "Success, you are logged in."
+      redirect to "/things"
     end
   end
 
@@ -45,8 +46,7 @@ class UsersController < ApplicationController
   end
 
   get '/users/logout' do
-    session.clear
+    session.clear if session[:user_id]
     erb :'users/goodbye'
-
   end 
 end 
