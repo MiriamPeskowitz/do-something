@@ -3,6 +3,68 @@
 ## Description
 A Sinatra app that lets a user keep track of daily community/political actions. Because it's easy to lose track of how things add up. For more info, see https://miriampeskowitz.github.io/do-something_a_sinatra_app
 
+## File Structure
+.
+├── Gemfile
+├── Gemfile.lock
+├── LICENSE
+├── README.md
+├── Rakefile
+├── app
+│   ├── controllers
+│   │   ├── application_controller.rb
+│   │   ├── futures_controller.rb
+│   │   ├── things_controller.rb
+│   │   └── users_controller.rb
+│   ├── helpers
+│   ├── models
+│   │   ├── future.rb
+│   │   ├── thing.rb
+│   │   └── user.rb
+│   ├── notes.md
+│   └── views
+│       ├── layout.erb
+│       ├── things
+│       │   ├── edit.erb
+│       │   ├── index.erb
+│       │   ├── new.erb
+│       │   └── show.erb
+│       ├── users
+│       │   ├── goodbye.erb
+│       │   ├── login.erb
+│       │   ├── show.erb
+│       │   └── signup.erb
+│       └── welcome.erb
+├── config
+│   └── environment.rb
+├── config.ru
+├── db
+│   ├── development.sqlite
+│   ├── migrate
+│   │   ├── 20180413203306_create_users_table.rb
+│   │   ├── 20180413203322_create_things_table.rb
+│   │   ├── 20180416175735_change_column_type_on_things.rb
+│   │   ├── 20180416233628_delete_userid_column_in_users_table.rb
+│   │   ├── 20180416234714_create_future_acts_table.rb
+│   │   ├── 20180418171817_drop_future_acts.rb
+│   │   └── 20180418172138_create_futures_table.rb
+│   ├── schema.rb
+│   └── seeds.rb
+├── lib
+├── public
+│   ├── images
+│   │   └── corneal-small.png
+│   ├── javascripts
+│   └── stylesheets
+│       └── main.css
+├── spec (NOT YET OPERATIONAL)
+│   ├── application_controller_spec.rb
+│   ├── future_controller_spec.rb
+│   ├── spec_helper.rb
+│   └── users_controller_spec.rb
+└── spec.md
+
+
 
 ## Instructions/Install 
 
