@@ -11,12 +11,11 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "secret" 	
     set :public_folder, 'public'
     set :views, 'app/views'
-   
   end
 
   get "/" do
   	@things = Thing.all
-    erb :welcome, :notice => "Welcome"
+    erb :"welcome", :notice => "Welcome"
   end
 
   helpers do
@@ -29,13 +28,6 @@ class ApplicationController < Sinatra::Base
          # or User.find_by(id: session[:user_id])
       end
 
-    end 
-
-    def authenticate_user
-      if !logged_in?
-        session[:notice] = "You must be logged in."
-        redirect '/login'
-      end
     end 
 
 

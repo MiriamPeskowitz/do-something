@@ -1,0 +1,15 @@
+
+
+<ol>
+	<li><%= @future.title %></li>	
+</ol>
+
+<h3> <a href="/things/<%= @thing.id %>/edit">Edit</a></h3>
+
+
+<h3>
+<form action="/futures/<%= @future.id %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete">
+</form>
+</h3>

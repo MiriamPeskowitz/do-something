@@ -1,9 +1,7 @@
-
 class UsersController < ApplicationController
   helpers Sinatra::RedirectWithFlash  
 
   get '/users/signup' do
-   
     if !logged_in?
       erb :'users/signup'
     else
@@ -14,6 +12,7 @@ class UsersController < ApplicationController
   post '/users/signup' do 
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
       session[:notice] = "please sign up"
+      #can I use session here if it hasn't been created yet? 
       redirect to '/users/signup'
     else
       @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
@@ -27,16 +26,15 @@ class UsersController < ApplicationController
 
   get '/users/login' do 
     if !logged_in?
-      session[:notice] = "Please sign up first."
       erb :'users/login' 
     else
-      session[:flash] = "Success, you are logged in."
       redirect to "/things"
     end
   end
 
  post '/users/login' do
     user = User.find_by(:username => params[:username])
+    #understand diff of User.find(... )
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect "/things"

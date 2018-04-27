@@ -1,13 +1,12 @@
-# do-something-now
+# do-something
 (in process)
 ###
 Description
-A Sinatra app that lets a user keep track of daily community/political actions. Because it's easy to lose track of how things add up.
+A Sinatra app that lets a user keep track of daily community/political actions. Do-Something lets you see how small actions add up. 
 
 ###
 Instructions/Install 
-
-Call up in Browser-- heroku? 
+Fork and use Shotgun in Browser. 
 
 ###
 Contributors Guide 

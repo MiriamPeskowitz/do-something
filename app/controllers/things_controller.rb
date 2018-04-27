@@ -1,17 +1,11 @@
-require 'sinatra/flash'
-require 'pry'
-
 class ThingsController < ApplicationController
 	
 
 	get '/things' do
-
 		if logged_in?
  			@things = User.find(session[:user_id]).things
-
 			erb :'/things/index' 
-		else 
-			
+		else 	
 			redirect to '/users/login'
 		end 
 	end 
@@ -21,7 +15,6 @@ class ThingsController < ApplicationController
 		if logged_in? 
 			erb :'things/new'
 		else 
-			flash[:"please log in."]
 			redirect to '/users/login'	
 		end 
 	end
@@ -29,9 +22,8 @@ class ThingsController < ApplicationController
 
 	post '/things' do
 		if logged_in? 
-			if current_user && params[:description] != ""
+			if current_user && params[:title] != ""
 				@thing = Thing.create(:date => params[:date], :title => params[:title], :description => params[:description], :user_id => current_user.id)
-
 				redirect to "/things/#{@thing.id}"
 			else 
 				redirect to '/things'
@@ -40,8 +32,6 @@ class ThingsController < ApplicationController
 			redirect to '/users/login'
 		end
 	end 
-
-
 
 	get '/things/:id' do 
 		if !logged_in?
@@ -57,14 +47,11 @@ class ThingsController < ApplicationController
 
 		@thing= Thing.find_by_id(params[:id]) 
 	
-		if logged_in? 
-		
+		if logged_in? 		
 			if current_user.id == @thing.user_id
-
 			  erb :"things/edit"
 			else 
-		      redirect to '/things'
-		      
+		      redirect to '/things'	      
 			end 
 		else
 		  redirect to '/users/login'

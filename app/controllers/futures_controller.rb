@@ -1,10 +1,10 @@
 class FuturesController < ApplicationController
 
-#index
-	get '/futures' do
-		@futures = Future.create(params[:future_act][]["title"])
-		erb :'things/index'
-	end 
+
+# 	get '/futures' do
+# 		@futures = Future.create(params[:future][]["title"])
+# 		erb :'things/index'
+# 	end 
 
 	get '/futures/new' do 
 		if logged_in? 
@@ -15,37 +15,63 @@ class FuturesController < ApplicationController
 	end 
 
 
-	post '/future' do
-		@future = Future.create(title => params([:title], :user_id => current_user.id))
+	post '/futures' do
+		binding.pry
 		if !params["future"]["title"].empty?
-			@future.titles << Future.create(title: params["future"]["title"])
+			@future = Future.new(:title => params[:future][:title], :user_id => current_user.id)
+			@future.save
+			redirect to "/future/#{@future.id}"
+		else
+			# flash
+			redirect to '/futures/new'
+		end	
+	end 
+
+
+	get '/futures/:id' do 
+		if !logged_in?
+			redirect to '/users/login'	
+		else
+			@future = Future.find_by_id(params[:id])
+			erb :'futures/show'
+		end 
+	end 
+
+
+	delete '/futures/:id/delete' do
+		@future = Future.find_by_id(params[:id])
+		# redirect to "/" if !logged_in?
+		if @future && @future.user_id == current_user.id
+			@future.delete 
+			redirect to 'futures/index'
+		else
+			redirect to '/'	
 		end
-		@future.save
-		redirect to "/future/#{@future.id}"
-	end #how do I get the nested form right as params 
 
-	# post '/things' do
-	# 	if logged_in? 
-	# 		if current_user && params[:description] != ""
-	# 			@thing = Thing.create(:date => params[:date], :title => params[:title], :description => params[:description], :user_id => current_user.id)
+	end
 
-	# 			redirect to "/things/#{@thing.id}"
-	# 		else 
-	# 			redirect to '/things'
-	# 		end
-	# 	else
-	# 		redirect to '/users/login'
-	# 	end
-	# end 
+# 	# post '/things' do
+# 	# 	if logged_in? 
+# 	# 		if current_user && params[:description] != ""
+# 	# 			@thing = Thing.create(:date => params[:date], :title => params[:title], :description => params[:description], :user_id => current_user.id)
+
+# 	# 			redirect to "/things/#{@thing.id}"
+# 	# 		else 
+# 	# 			redirect to '/things'
+# 	# 		end
+# 	# 	else
+# 	# 		redirect to '/users/login'
+# 	# 	end
+# 	# end 
 
 
-# post '/owners' do
-#   @owner = Owner.create(params[:owner])
-#   if !params["pet"]["name"].empty?
-#     @owner.pets << Pet.create(name: params["pet"]["name"])
-#   end
-#   @owner.save
-#   redirect to "owners/#{@owner.id}"
-# end
+# # post '/owners' do
+# #   @owner = Owner.create(params[:owner])
+# #   if !params["pet"]["name"].empty?
+# #     @owner.pets << Pet.create(name: params["pet"]["name"])
+# #   end
+# #   @owner.save
+# #   redirect to "owners/#{@owner.id}"
+# # end
 
 end 
