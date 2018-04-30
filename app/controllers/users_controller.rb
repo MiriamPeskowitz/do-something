@@ -11,17 +11,18 @@ class UsersController < ApplicationController
 
   post '/users/signup' do 
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
-      session[:message] = "Fill in all fields, please"
+      # session[:message] = "Fill in all fields, please"
+      flash[:message] = "Fill in all fields, please."
       #can I use session here if it hasn't been created yet? 
       redirect to '/users/signup'
     else
       @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
       @user.save
       session[:user_id] = @user.id
-      session[:message] = "great job!"
       redirect to '/things'
     end
   end
+
 # signup and login get you to the same place. Signup and you don't have to login, 
 # because @user is created. 
 

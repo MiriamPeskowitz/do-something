@@ -1,13 +1,12 @@
 require './config/environment'
 require 'sinatra/base'
-# require 'rack-flash'
-# require 'sinatra/redirect_with_flash'
-  
+require 'sinatra/flash'  
 
 class ApplicationController < Sinatra::Base
  
  configure do
     enable :sessions
+    register Sinatra::Flash
     set :session_secret, "secret" 	
     set :public_folder, 'public'
     set :views, 'app/views'

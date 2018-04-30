@@ -13,7 +13,6 @@ gem 'pry'
 gem 'bcrypt'
 gem "tux"
 gem "sinatra-flash"
-gem "rack-flash3"
 gem "sinatra-redirect-with-flash"
 gem 'rack', '~> 2.0.4'
 

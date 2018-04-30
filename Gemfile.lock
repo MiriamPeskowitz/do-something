@@ -51,8 +51,6 @@ GEM
       method_source (~> 0.9.0)
     public_suffix (3.0.2)
     rack (2.0.5)
-    rack-flash3 (1.0.5)
-      rack
     rack-protection (2.0.1)
       rack
     rack-test (1.0.0)
@@ -121,7 +119,6 @@ DEPENDENCIES
   database_cleaner!
   pry
   rack (~> 2.0.4)
-  rack-flash3
   rack-protection (~> 2.0, >= 2.0.1)
   rack-test
   rake
