@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   post '/users/signup' do 
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
-      session[:notice] = "please sign up"
+      session[:message] = "please sign up"
       #can I use session here if it hasn't been created yet? 
       redirect to '/users/signup'
     else
