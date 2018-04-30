@@ -1,22 +1,27 @@
+<% if @message %>
+  <p><%= @message %></p>
+<% end %>
+
 <h2>Sign up, so you can start recording all the good that you do. </h2>
 <form action="/users/signup" method="POST">
 
 <fieldset>
-	<br>
+	 <br>
   <label for="username">Your username</label>
   <input type="text" name="username" >
-	<br>
-	<br>
+	 <br>
+	 <br>
   <label for="email">Your email</label>
   <input type="email" name="email">
-	<br>
-	<br>
+	 <br>
+	 <br>
   <label for="password">Your password</label>
   <input type="password" name="password" >
-	<br>
-	<br>
+	 <br>
+	 <br>
   <input type="submit" value="Signup">
-    <br>
-    <br>
+   <br>
+   <br>
   </fieldset>
 </form>
+

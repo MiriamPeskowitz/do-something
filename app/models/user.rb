@@ -1,19 +1,17 @@
 class User < ActiveRecord::Base
-	has_many :things
-	has_many :futures
-	has_secure_password
-	validates_presence_of :username, :email, :password
-	validates :password, length: { minimum: 8, maximum: 20}
+  has_many :things
+  has_many :futures
+  has_secure_password
+  validates_presence_of :email
+  # validates_presence_of :password_digest
+  validates :username, presence: true, uniqueness: true
+  validates :password, presence: true, length: { minimum: 8, maximum: 20, wrong_length: "Please use between 8 and 20 characters."}
 
-	# validates :password, :presence => true, :length => (:minimum => 8)
-	# validates :username, :presence, :uniquness
-
-	def capitalize(username)
-		username.capitalize
-	end 
-	#can also modify in place (with exclamation mark/bang) :username => params[:usernname].capitalize!
+  def capitalize(username)
+	username.capitalize
+  end 
+	#note, can also modify in place (with exclamation mark/bang) :username => params[:usernname].capitalize!
 end 
-# add more specific validations, say, of password size? 
 
 
 # # other possibilities for password validation: 

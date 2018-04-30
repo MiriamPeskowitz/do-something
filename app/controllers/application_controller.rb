@@ -1,7 +1,7 @@
 require './config/environment'
 require 'sinatra/base'
-require 'rack-flash'
-require 'sinatra/redirect_with_flash'
+# require 'rack-flash'
+# require 'sinatra/redirect_with_flash'
   
 
 class ApplicationController < Sinatra::Base
@@ -15,20 +15,17 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
   	@things = Thing.all
-    erb :"welcome", :notice => "Welcome"
+    erb :"welcome"
   end
 
   helpers do
-      def logged_in?
-        !!session[:user_id]
-      end
+    def logged_in?
+      !!session[:user_id]
+    end
 
-      def current_user
-         User.find(session[:user_id])
+    def current_user
+      User.find(session[:user_id])
          # or User.find_by(id: session[:user_id])
-      end
-
-    end 
-
-
+    end
+  end 
 end

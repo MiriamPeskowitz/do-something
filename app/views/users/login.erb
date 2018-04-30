@@ -1,3 +1,7 @@
+<% if @message %>
+  <p><%= @message %></p>
+<% end %>
+
 <h2>Login, so you can record the good that you do. </h2>
  
 <form action="/users/login" method="POST">
