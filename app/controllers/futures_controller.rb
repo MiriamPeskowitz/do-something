@@ -15,15 +15,15 @@ class FuturesController < ApplicationController
 	end 
 
 	post '/futures' do
-	  if !params["future"]["title"].empty?
-		@future = Future.new(:title => params[:future][:title], :user_id => current_user.id)			
-		@future.save
-		redirect to "/future/#{@future.id}"
+	  if params[:title] != ""
+		@future = Future.create(:title => params[:title], :user_id => current_user.id)			
+		redirect to "/future/index"
 	  else
-		redirect to '/futures/new'
+		redirect to '/'
+		flash[:message] = "You're not authorized to view this page."
 	  end	
 	end 
-
+binding.pry
 	get '/futures/:id' do 
 	  if !logged_in?
 		redirect to '/users/login'	

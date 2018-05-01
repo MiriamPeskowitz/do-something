@@ -27,12 +27,13 @@ class ThingsController < ApplicationController
 		  redirect to '/things'
 		end
 	  else
+	  	flash[:message] = "You're not authorized to view this page."
 		redirect to '/users/login'
 	  end
 	end 
 
 	get '/things/:id' do 
-	  if !logged_in?
+	  if !logged_in? 
 		redirect to '/users/login'	
 	  else
 		@thing = Thing.find_by_id(params[:id])
