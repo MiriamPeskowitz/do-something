@@ -13,12 +13,12 @@ class FuturesController < ApplicationController
 	  end 
 	end 
 
-
+#DEBUG HERE 
 	post '/futures' do
 	  if logged_in?
 	  	if current_user
 	  	  @future = Future.create(:title => params[:future][:title], :user_id => current_user.id)
-		  redirect to "/futures/#{@future.id}"
+		  erb :"/futures/#{@future.id}"
 		else 
 		  redirect to '/things'
 		end
@@ -28,17 +28,16 @@ class FuturesController < ApplicationController
 	  end
 	end 
 
-
 # use future1, future2, future3 as the names of them, though on the form/erb is looks like 1,2,3. 
 #Future.first(3)
 # or Future.limit(3).order('id asc') or a version of this. 
 	get '/futures/:id' do 
-	  if @future && @future.user_id == current_user.id		
+	  # if @future && @future.user_id == current_user.id	
   		 @futures = Future.all
 		 erb :'futures/show'
-	  else 
-		redirect to '/users/login'	
-	  end 
+	 #  else 
+		# redirect to '/users/login'	
+	 #  end 
 	end
 
 	

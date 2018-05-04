@@ -22,7 +22,7 @@ class ThingsController < ApplicationController
 	  if logged_in? 
 		if current_user #&& params[:title] != "" -- validation for presence done in model 
 		  @thing = Thing.create(:date => params[:thing][:date], :title => params[:thing][:title], :description => params[:thing][:description], :user_id => current_user.id)
-		  redirect to "/things/#{@thing.id}"
+		  redirect to "/things/#{@thing.id}" # should be render 
 		else 
 		  redirect to '/things'
 		end
