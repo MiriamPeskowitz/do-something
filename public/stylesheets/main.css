@@ -14,7 +14,7 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: black;
+    background-color: white;
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/22/Trump-WomensMarch_2017-1060242_%2832409721756%29.jpg");
     color: darkgray;
     font-family: Sans-Serif;
@@ -24,12 +24,14 @@
 
   .topnav {
     overflow: hidden;
-    background-color: #333;
+    color: gray;
+    background-color: white;
   }
 
   .topnav a {
     float: left;
-    color: #f2f2f2;
+    color: #797979;
+    background-color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -37,7 +39,7 @@
   }
 
   .topnav a:hover {
-    background-color: #ddd;
+    background-color: white;
     color: black;
   }
 
@@ -48,6 +50,7 @@
 
   .navbar {
     list-style-type: none;
+    background-color: white;
     margin: 0;
     padding: 0;
   }
