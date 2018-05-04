@@ -4,6 +4,17 @@
 	<li><%= @thing.title %> -- <%= @thing.description %></li>	
 </ol>
 
+<% if @futures %>
+<ol>
+	<li>
+	<% @futures.each do |future| %>
+	<%= future.title %>
+	<% end %>
+	</li>	
+</ol>
+<% end %>
+
+
 <h3> <a href="/things/<%= @thing.id %>/edit">Edit</a></h3>
 
 <h3 class="link"><a href="/things/new">Add another</a></h3>

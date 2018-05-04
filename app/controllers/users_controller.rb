@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   post '/users/signup' do 
     @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
-      if @user.save
+      if @user.save 
         session[:user_id] = @user.id
         flash[:message] = "Great job signing in."
         redirect to '/things'
@@ -39,10 +39,11 @@ class UsersController < ApplicationController
   end
 
  post '/users/login' do
-    @user = User.find_by(:username => params[:user][:username])
+    @user = User.find_by(:username => params[:username])
     #understand diff of User.find(... )
-    if @user && @user.authenticate(params[:user][:password])
-      session[:user_id] = user.id
+     
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
       redirect "/things"
     else
       flash[:message] = "Please sign up first."

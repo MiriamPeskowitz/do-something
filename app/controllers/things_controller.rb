@@ -42,7 +42,7 @@ class ThingsController < ApplicationController
 	end 
 
 	get '/things/:id/edit' do
-	  @thing= Thing.find_by_id(params[:id]) 
+	  @thing= Thing.find_by(:id => params[:id]) 
 	  if logged_in? 		
 	    if current_user.id == @thing.user_id	
 	      erb :"things/edit"

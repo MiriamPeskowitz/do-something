@@ -21,9 +21,11 @@
         <%= flash[type] %>
         <a href="#" class="close">&times;</a>
       </div>
+      <% end %>
+    <% if @user && @user.errors.any? %>
+      <h3 style="color:red;"><%= @user.errors.full_messages.first %></h3>
+      <% end %>
 
-    
-    <% end %>
 
     <%= yield %>
 
