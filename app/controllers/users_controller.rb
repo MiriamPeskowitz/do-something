@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
       # session[:message] = "Fill in all fields, please"
       flash[:warning] = "Fill in all fields, please."
+      flash[:message] = "#{user.errors.full_messages.join(', ')}"
       #can I use session here if it hasn't been created yet? 
       redirect to '/users/signup'
     else

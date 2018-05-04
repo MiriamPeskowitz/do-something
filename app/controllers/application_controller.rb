@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
-    def logged_in?
+    def logged_in? # same as 'is authenticated?'
       !!session[:user_id]
     end
 
@@ -28,3 +28,14 @@ class ApplicationController < Sinatra::Base
     end
   end 
 end
+
+# # def require_logged_in
+#   if 
+
+# def is_authenticated?
+#   return !!session[:user_id]
+# end 
+
+# def require_logged_in
+#   redirect to '/login' unless is_authenticated
+# end 
