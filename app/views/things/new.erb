@@ -3,22 +3,22 @@
 <form action="/things" method="POST">
 
 	<label for="date">Date</label>
-	<input type="date" name="date">
+	<input type="date" name="thing[date]">
       <br>
 
 	<label for="title">Title:</label>
 	  <br>
-	<textarea rows="2" cols="50" maxlength="50" name="title" id= "title" ></textarea>	
+	<textarea rows="2" cols="50" maxlength="50" name="thing[title]" id= "title" ></textarea>	
 	  <br>
 	  
 	<label for="description">Description:</label>
 	  <br>		
-	<textarea rows="4" cols="50" maxlength="100" name="description" id= "description" ></textarea>	
+	<textarea rows="4" cols="50" maxlength="100" name="thing[description]" id= "description" ></textarea>	
 	  <br>
  	<input type="submit" class="submit-button" value="Well done!">
 
 </form>
 
-<h3><a href="/things/index">See all your actions</a></h3>
+<h3><a href="/things">See all your actions</a></h3>
 <h3><a href="/users/logout">Logout</a></h3>
 

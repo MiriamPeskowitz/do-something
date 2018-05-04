@@ -20,9 +20,9 @@ class ThingsController < ApplicationController
 
 	post '/things' do
 	  if logged_in? 
-		if current_user && params[:title] != ""
-		  @thing = Thing.create(:date => params[:date], :title => params[:title], :description => params[:description], :user_id => current_user.id)
-		  redirect to "/things/#{@thing.id}"
+		if current_user #&& params[:title] != "" -- validation for presence done in model 
+		  @thing = Thing.create(:date => params[:thing][:date], :title => params[:thing][:title], :description => params[:thing][:description], :user_id => current_user.id)
+		  redirect to "/things/#{@thing.id}" # should be render 
 		else 
 		  redirect to '/things'
 		end
@@ -36,13 +36,13 @@ class ThingsController < ApplicationController
 	  if !logged_in? 
 		redirect to '/users/login'	
 	  else
-		@thing = Thing.find_by_id(params[:id])
+		@thing = Thing.find_by(:id =>params[:id])
 		erb :'things/show'
 	  end 
 	end 
 
 	get '/things/:id/edit' do
-	  @thing= Thing.find_by_id(params[:id]) 
+	  @thing= Thing.find_by(:id => params[:id]) 
 	  if logged_in? 		
 	    if current_user.id == @thing.user_id	
 	      erb :"things/edit"
@@ -58,7 +58,7 @@ class ThingsController < ApplicationController
 	  @thing = Thing.find_by_id(params[:id])
 	  redirect to '/users/login' if !logged_in? 
 	  if params[:description] == "" || current_user.id != @thing.user_id
-		redirect to "/things/#{@thing.d}/edit"
+		redirect to "/things/#{@thing.id}/edit"
 	  else	   
 	    @thing.date = params[:thing][:date]
 	    @thing.title = params[:thing][:title]
