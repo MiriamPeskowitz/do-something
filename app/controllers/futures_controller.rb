@@ -18,12 +18,13 @@ class FuturesController < ApplicationController
 	  if logged_in?
 	  	if current_user
 	  	  @future = Future.create(:title => params[:future][:title], :user_id => current_user.id)
-		  erb :"/futures/#{@future.id}"
+		  redirect to "/futures/#{@future.id}"
 		else 
+		  flash[:message] = "You are not able to edit this page"	
 		  redirect to '/things'
 		end
 	  else
-	  	flash[:message] = "You're not authorized to view this page."
+	  	flash[:message] = "You are not authorized to view this page."
 		redirect to '/users/login'
 	  end
 	end 

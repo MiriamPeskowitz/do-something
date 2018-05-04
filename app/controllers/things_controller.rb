@@ -22,6 +22,7 @@ class ThingsController < ApplicationController
 	  if logged_in? 
 		if current_user #&& params[:title] != "" -- validation for presence done in model 
 		  @thing = Thing.create(:date => params[:thing][:date], :title => params[:thing][:title], :description => params[:thing][:description], :user_id => current_user.id)
+		  flash[:message] = "You got this!"
 		  redirect to "/things/#{@thing.id}" # should be render 
 		else 
 		  redirect to '/things'
@@ -37,6 +38,7 @@ class ThingsController < ApplicationController
 		redirect to '/users/login'	
 	  else
 		@thing = Thing.find_by(:id =>params[:id])
+		flash[:message] = "Awesome stuff!"
 		erb :'things/show'
 	  end 
 	end 
