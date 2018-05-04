@@ -1,18 +1,9 @@
 <h2>Today I: </h2>
 
-<ol>
-	<li><%= @thing.title %> -- <%= @thing.description %></li>	
-</ol>
+<section>
+	<%= @thing.title %> -- <%= @thing.description %>	
 
-<% if @futures %>
-<ol>
-	<li>
-	<% @futures.each do |future| %>
-	<%= future.title %>
-	<% end %>
-	</li>	
-</ol>
-<% end %>
+</section>
 
 
 <h3> <a href="/things/<%= @thing.id %>/edit">Edit</a></h3>

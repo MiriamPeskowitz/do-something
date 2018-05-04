@@ -15,15 +15,11 @@ class FuturesController < ApplicationController
 
 
 	post '/futures' do
-	  if logged_in? 
-	  	binding.pry
-	  	@future = Future.new(:title => params[:title])
-		# if current_user && params[:title] != ""
-		 if @future.save
-		 	
+	  if logged_in?
+	  	if current_user
+	  	  @future = Future.create(:title => params[:future][:title], :user_id => current_user.id)
 		  redirect to "/futures/#{@future.id}"
 		else 
-    	  # flash[:message] = @user.errors.full_messages.first.join(",")
 		  redirect to '/things'
 		end
 	  else
@@ -31,6 +27,7 @@ class FuturesController < ApplicationController
 		redirect to '/users/login'
 	  end
 	end 
+
 
 # use future1, future2, future3 as the names of them, though on the form/erb is looks like 1,2,3. 
 #Future.first(3)
