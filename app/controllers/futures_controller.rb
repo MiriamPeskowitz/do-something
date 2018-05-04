@@ -13,30 +13,17 @@ class FuturesController < ApplicationController
 	  end 
 	end 
 
-	# post '/futures' do
-	# 	binding.pry
-	 
-	# 	@future = Future.new(:title => params[:title], :user_id => current_user.id)			
-	#  if params[:title]
-	#  	Future.save	
-	# 	redirect to "/futures/:id"
-	#   else
-	# 	redirect to '/'
-	# 	flash[:notice] = @user.errors.full_messages.first.join(",")
-	# 	# flash[:message] = "You're not authorized to be on this page."
-	# 	redirect to '/home'
-	#   end	
-	# end 
-
 
 	post '/futures' do
 	  if logged_in? 
 	  	binding.pry
-		if current_user && params[:title] != ""
-		  @future = Future.create(:title => params[:title], :user_id => current_user.id)
+	  	@future = Future.new(:title => params[:title])
+		# if current_user && params[:title] != ""
+		 if @future.save
+		 	
 		  redirect to "/futures/#{@future.id}"
 		else 
-    	  flash[:notice] = @user.errors.full_messages.first.join(",")
+    	  # flash[:message] = @user.errors.full_messages.first.join(",")
 		  redirect to '/things'
 		end
 	  else
