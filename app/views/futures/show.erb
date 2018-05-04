@@ -1,0 +1,18 @@
+
+<ol>
+	<% @futures.each do |future| %>
+		<li><%= future.title %></a>
+		</li>
+		<br>
+	<% end %>
+</ol>
+
+<h3> <a href="/futures/<%= @future.id %>/edit">Edit</a></h3>
+
+
+<h3>
+<form action="/futures/<%= @future.id %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete">
+</form>
+</h3>

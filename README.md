@@ -1,9 +1,21 @@
+<<<<<<< HEAD
 # Do-Something
 
 ## Description
 A Sinatra app that lets a user keep track of daily community/political actions. Because it's easy to lose track of how things add up. For more info, see https://miriampeskowitz.github.io/do-something_a_sinatra_app
 
 ## Instructions/Install 
+=======
+# do-something
+(in process)
+###
+Description
+A Sinatra app that lets a user keep track of daily community/political actions. Do-Something lets you see how small actions add up. 
+
+###
+Instructions/Install 
+Fork and use Shotgun in Browser. 
+>>>>>>> working_branch
 
 URL coming soon. Until then it can be forked and run on localhost. 
 

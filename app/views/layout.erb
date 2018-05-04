@@ -14,13 +14,21 @@
   <link rel="stylesheet" href="/stylesheets/main.css" />
 </head>
 <body>
-
-  <div class="wrapper">
   
-      <%= yield %>
+  <div class="wrapper">
+    <% flash.keys.each do |type| %>
+      <div data-alert class="flash <%= type %> alert-box radius">
+        <%= flash[type] %>
+        <a href="#" class="close">&times;</a>
+      </div>
+    <% end %>
+
+    <%= yield %>
 
     <footer class="branding">
-      <small>&copy; 2018 <strong>DoSomethingNow</strong></small>
+      <h3 class="link"><a href="/">Home</a></h3>
+      <small>&copy; 2018 <strong>DoSomething</strong></small>
+
     </footer>
   </div>
 
