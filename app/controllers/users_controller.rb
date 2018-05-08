@@ -16,7 +16,7 @@ class UsersController < ApplicationController
         flash[:message] = "Great job signing in."
         redirect to '/things'
       else 
-        flash[:notice] = @user.errors.full_messages.first.join(",")
+        flash[:notice] = @user.errors.full_messages.first
          redirect to '/users/signup'  
         # Don't need this, because model authentications. params[:username] == "" || params[:email] == "" || params[:password] == ""
       # session[:message] = "Fill in all fields, please"

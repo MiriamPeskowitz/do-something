@@ -15,7 +15,7 @@ class FuturesController < ApplicationController
 
 #DEBUG HERE 
 	post '/futures' do
-	  if logged_in?
+	  if logged_in? 
 	  	if current_user
 	  	  @future = Future.create(:title => params[:future][:title], :user_id => current_user.id)
 		  redirect to "/futures/#{@future.id}"
@@ -33,14 +33,18 @@ class FuturesController < ApplicationController
 #Future.first(3)
 # or Future.limit(3).order('id asc') or a version of this. 
 	get '/futures/:id' do 
-	  # if @future && @future.user_id == current_user.id	
-  		 @futures = Future.all
-		 erb :'futures/show'
-	 #  else 
-		# redirect to '/users/login'	
-	 #  end 
+		if !logged_in? 
+			redirect to '/users/login'
+	  	else 
+	  		@futures = Future.all
+	  		# @future.user_id.to_i == current_user.id	 	
+  		 	# @futures = current_user.futures.all
+  		 	flash[:message] = "Great stuff to plan!"
+		 	erb :'futures/show'
+		 end
 	end
-
+	# @user.futures
+	# @futures.uniq {|f| f.title }
 	
 	delete '/futures/:id/delete' do
 	  @future = Future.find_by_id(params[:id])

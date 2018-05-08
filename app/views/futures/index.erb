@@ -1,4 +1,9 @@
 <h4>futures index </h4>
+
+ <% if @user && @user.errors.any? %>
+    <h3 style="color: red;"><%= @user.errors.full_messages.first %></h3>
+ <% end %>
+ 
 <h3>Next, I want to:</h3>
 	<ol>
 	
