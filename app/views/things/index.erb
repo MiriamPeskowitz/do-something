@@ -1,6 +1,6 @@
 <h2>Small daily actions add up.</h2>
 
-<% if @things.count == 0 %>
+<% if @things.empty? %>
 	<h3><%= current_user.username.capitalize %>, what did you do today? </3>
 
 <% else %>

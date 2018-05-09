@@ -33,10 +33,10 @@ class FuturesController < ApplicationController
 #Future.first(3)
 # or Future.limit(3).order('id asc') or a version of this. 
 	get '/futures/:id' do 
-		if !logged_in? 
+		if !logged_in? && !current_user
 			redirect to '/users/login'
 	  	else 
-	  		@futures = Future.all
+	  		@future = Future.find_by(id: current_user.id)
 	  		# @future.user_id.to_i == current_user.id	 	
   		 	# @futures = current_user.futures.all
   		 	flash[:message] = "Great stuff to plan!"
@@ -46,6 +46,33 @@ class FuturesController < ApplicationController
 	# @user.futures
 	# @futures.uniq {|f| f.title }
 	
+
+	get '/futures/:id/edit' do
+	  @future= Future.find_by(:id => params[:id]) 
+	  if logged_in? 		
+	    if current_user.id == @future.user_id	
+	      erb :"futures/edit"
+		else 
+		  redirect to '/futures'	      
+		end 
+	  else
+	    redirect to '/users/login'
+	  end 
+	end 
+
+	patch '/futures/:id' do
+	  @future = Future.find_by_id(params[:id])
+	  redirect to '/users/login' if !logged_in? 
+	  if params[:title] == "" || current_user.id != @thing.user_id
+		redirect to "/futures/#{@future.id}/edit"
+	  else	   
+	    @future.title = params[:future][:title]
+	    @future.save
+	    redirect to "/futures/#{@future.id}"
+	  end 
+	end 
+
+
 	delete '/futures/:id/delete' do
 	  @future = Future.find_by_id(params[:id])
 		# redirect to "/" if !logged_in?
