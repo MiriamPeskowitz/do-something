@@ -1,9 +1,11 @@
 class FuturesController < ApplicationController
 
 	get '/futures' do
-	  @futures = Future.create(:title => params[:title], :user_id => current_user.id)
-	  erb :'things/index'
+	  @futures = User.find(session[:user_id]).futures
+	  # @futures = Future.create(:title => params[:title], :user_id => current_user.id)
+	  erb :'futures/index'
 	end 
+
 
 	get '/futures/new' do 
 	  if logged_in? 
@@ -13,18 +15,13 @@ class FuturesController < ApplicationController
 	  end 
 	end 
 
-#DEBUG HERE 
 	post '/futures' do
-	  if logged_in?
-	  	if current_user
-	  	  @future = Future.create(:title => params[:future][:title], :user_id => current_user.id)
-		  erb :"/futures/#{@future.id}"
-		else 
-		  redirect to '/things'
-		end
-	  else
-	  	flash[:message] = "You're not authorized to view this page."
+	  if !logged_in? && !current_user
+	  	flash[:message] = "You are not able to edit this page."
 		redirect to '/users/login'
+	  else
+	  	  @future = Future.create(:title => params[:future][:title], :user_id => current_user.id)
+		  redirect to "/futures/#{@future.id}"
 	  end
 	end 
 
@@ -32,15 +29,45 @@ class FuturesController < ApplicationController
 #Future.first(3)
 # or Future.limit(3).order('id asc') or a version of this. 
 	get '/futures/:id' do 
-	  # if @future && @future.user_id == current_user.id	
-  		 @futures = Future.all
-		 erb :'futures/show'
-	 #  else 
-		# redirect to '/users/login'	
-	 #  end 
+		if !logged_in? && !current_user
+			redirect to '/users/login'
+	  	else 
+	  		@future = Future.find_by(id: params[:id])
+  		 	# @futures = current_user.futures.all
+  		 	# @future.user_id = current_user.id.to_s
+  		 	flash[:message] = "Great stuff to plan!"
+		 	erb :'futures/show'
+		 end
 	end
-
+	# @user.futures
+	# @futures.uniq {|f| f.title }
 	
+
+	get '/futures/:id/edit' do
+	  if !logged_in? 
+	  	 redirect to '/users/login'
+	  else
+	  	# WHAt do I want to do: pull down the right future.id
+	  
+	  	 @future= Future.find_by(id: params[:id])
+	  	 erb :"futures/edit"	
+	  end	  	    	   
+	end 
+
+	patch '/futures/:id' do
+	  if !logged_in? 
+	  	redirect to '/users/login' 
+	  else	
+
+        @future = Future.find_by_id(params[:id])   
+	    @future.title = params[:future][:title]
+	    @future.user_id = current_user.id
+	    @future.save
+	    redirect to "/futures/#{@future.id}"
+	  end 
+	end 
+
+
 	delete '/futures/:id/delete' do
 	  @future = Future.find_by_id(params[:id])
 		# redirect to "/" if !logged_in?

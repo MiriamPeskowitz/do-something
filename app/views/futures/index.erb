@@ -1,15 +1,23 @@
-<h4>futures index </h4>
+<h2>Plans for Future Actions</h2>
+
+ <% if @user && @user.errors.any? %>
+    <h3 style="color: red;"><%= @user.errors.full_messages.first %></h3>
+ <% end %>
+ 
+<h3 class="link"><a href="/futures">See all</a></h3>
+
+
 <h3>Next, I want to:</h3>
+
 	<ol>
-	
-		<% @futures.each do |future| %>
-			<li> <%= future.title %> 
-			<form>
-				<form action="futures/<%= @futures.id %>/delete" method="post">
-  				<input id="hidden" type="hidden" name="_method" value="delete">
-  				<button type="submit">Done</button>
-			</form>
-			</li>
-			<br>
+		<% @futures.each_with_index do |future, index| %>
+			<% if future.title != nil %>
+				<li> <a href='/futures/<%= future.id %>'>
+				<%= index + 1 %> . <%= future.title %> </li>
+				</a>
+				<br>
+			<% end %>
 		<% end %>
 	</ol>
+
+

@@ -1,1 +1,19 @@
-futures edit page 
+
+<h2>Edit this future act: <%= @future.title %></h2>
+
+<form action="/futures/<%= @future.id %>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+ 
+	<br>
+    <br>
+  
+  <label>Future Action:</label> 
+  	<br>
+  <textarea rows="4" cols="50" maxlength="200" name="future[title]" id="future_title"><%= @future.title %></textarea>
+
+	<br>
+    <br>
+  
+  <input type="submit" name="edit" value="Okay, it's good now. ">
+  
+</form>
