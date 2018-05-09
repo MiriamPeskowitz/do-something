@@ -1,5 +1,7 @@
 
 
+# NOTES 
+
 # some of them are below - 
 
 # what does users do? 
@@ -85,18 +87,3 @@
 
 # # code from applicationcontroller -- 
 
-
-# #   get "/" do
-# #     session.clear
-# #     @things = Thing.all
-# #     erb :welcome
-# #   end
-
-# #   helpers do
-# #       def logged_in?
-# #         !!session[:user_id]
-# #       end
-
-# #       def current_user
-# #          User.find(session[:user_id])
-# #       end

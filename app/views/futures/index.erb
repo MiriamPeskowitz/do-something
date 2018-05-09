@@ -1,4 +1,4 @@
-<h4>futures index </h4>
+<h2>Plans for Future Actions</h2>
 
  <% if @user && @user.errors.any? %>
     <h3 style="color: red;"><%= @user.errors.full_messages.first %></h3>
@@ -8,9 +8,16 @@
 
 
 <h3>Next, I want to:</h3>
+
 	<ol>
 		<% @futures.each_with_index do |future, index| %>
-		<li> <a href='/futures/<%= future.id %>'><%= index + 1 %> . <%= future.title %> </li></a><br>
+			<% if future.title != nil %>
+				<li> <a href='/futures/<%= future.id %>'>
+				<%= index + 1 %> . <%= future.title %> </li>
+				</a>
+				<br>
+			<% end %>
 		<% end %>
 	</ol>
+
 

@@ -4,6 +4,9 @@ require 'rack/test'
 require 'capybara/rspec'
 require 'capybara/dsl'
 require 'rspec'
+# these two? 
+RACK_ENV = "test"
+ENV["RACK_ENV"] = "test"
 
 
 RSpec.configure do |config|

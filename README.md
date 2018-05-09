@@ -19,6 +19,8 @@ Want to contribute? Send me some Github issues, whether it's bugs you've found (
 ## Next features: 
 	-- A way to share on Twitter, etc. 
 	-- A 3-item to-do list where a user can store the next few things they want to do.
+	-- "/welcome" -Add a range -- say, 30 lines of @thing, with option for full long list). List gets very long. 
+	-- "futures/index"  Add edit and then delete buttons, and move top 3 to things/index, with a button to see full list of plans for the future. 
 	
 
 ## MIT License
