@@ -46,9 +46,7 @@ class FuturesController < ApplicationController
 	get '/futures/:id/edit' do
 	  if !logged_in? 
 	  	 redirect to '/users/login'
-	  else
-	  	# WHAt do I want to do: pull down the right future.id
-	  
+	  else  
 	  	 @future= Future.find_by(id: params[:id])
 	  	 erb :"futures/edit"	
 	  end	  	    	   
@@ -58,7 +56,6 @@ class FuturesController < ApplicationController
 	  if !logged_in? 
 	  	redirect to '/users/login' 
 	  else	
-
         @future = Future.find_by_id(params[:id])   
 	    @future.title = params[:future][:title]
 	    @future.user_id = current_user.id
@@ -69,13 +66,13 @@ class FuturesController < ApplicationController
 
 
 	delete '/futures/:id/delete' do
-	  @future = Future.find_by_id(params[:id])
 		# redirect to "/" if !logged_in?
-	  if @future && @future.user_id == current_user.id
-		@future.delete 
-		redirect to 'futures/index'
+	  if @future && @future.user_id == current_user.id.to_s
+		 @future = Future.delete(params[:id])
+		 redirect to '/futures/index'
 	  else
-	    redirect to '/'	
+	  	flash[:message] = "Something went wrong."
+	    redirect to "/futures/#{@future.id}"	
       end
 	end
 end 

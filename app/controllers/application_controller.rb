@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-  	@things = Thing.all
+  	@things = Thing.all.last(30)
     erb :"welcome"
   end
 
@@ -22,7 +22,7 @@ class ApplicationController < Sinatra::Base
       !!session[:user_id]
     end
 
-    def current_user
+    def current_user # same as "is authorized"
       @user = User.find_by(:id => session[:user_id]) if session[:user_id]
 
          
