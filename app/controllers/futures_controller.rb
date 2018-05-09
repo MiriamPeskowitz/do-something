@@ -67,13 +67,13 @@ class FuturesController < ApplicationController
 
 
 	delete '/futures/:id/delete' do
-	  @future = Future.find_by_id(params[:id])
 		# redirect to "/" if !logged_in?
-	  if @future && @future.user_id == current_user.id
-		 @future.delete 
-		 redirect to 'futures/index'
+	  if @future && @future.user_id == current_user.id.to_s
+		 @future = Future.delete(params[:id])
+		 redirect to '/futures/index'
 	  else
-	    redirect to '/'	
+	  	flash[:message] = "Something went wrong."
+	    redirect to "/futures/#{@future.id}"	
       end
 	end
 end 
