@@ -16,4 +16,4 @@ end
 
 
 
-# validates_length_of :password, minimum: 6, if: Proc.new { |user| user.password.present? }
+# ?? validates_length_of :password, minimum: 6, if: Proc.new { |user| user.password.present? }

@@ -25,7 +25,7 @@ class FuturesController < ApplicationController
 	  end
 	end 
 
-# use future1, future2, future3 as the names of them, though on the form/erb is looks like 1,2,3. 
+# To input 3 at a time, use future1, future2, future3 as the names of them, though on the form/erb is looks like 1,2,3. 
 #Future.first(3)
 # or Future.limit(3).order('id asc') or a version of this. 
 	get '/futures/:id' do 
@@ -40,7 +40,7 @@ class FuturesController < ApplicationController
 		 end
 	end
 	# @user.futures
-	# @futures.uniq {|f| f.title }
+	
 	
 
 	get '/futures/:id/edit' do
@@ -51,6 +51,8 @@ class FuturesController < ApplicationController
 	  	 erb :"futures/edit"	
 	  end	  	    	   
 	end 
+
+# patch vs put? 
 
 	patch '/futures/:id' do
 	  if !logged_in? 
@@ -63,6 +65,8 @@ class FuturesController < ApplicationController
 	    redirect to "/futures/#{@future.id}"
 	  end 
 	end 
+# did this manually, could be @future = Future.find(params[:id]), @future.update(params: future)
+
 
 
 	delete '/futures/:id/delete' do

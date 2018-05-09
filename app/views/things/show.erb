@@ -1,20 +1,19 @@
 <h2>Today I: </h2>
 
-<div>
+<section>
 	<%= @thing.title %> -- <%= @thing.description %>	
+</section>
 
+<div class="buttons">
+	<h3> <a href="/things/<%= @thing.id %>/edit">Edit</a></h3>
+	<h3>
+	<form action="/things/<%= @thing.id %>/delete" method="post">
+	  <input id="hidden" type="hidden" name="_method" value="delete">
+	  <input type="submit" value="delete">
+	</form>
+	</h3>
+	<h3 class="link"><a href="/things/new">Add another</a></h3>
+	<h3 class="link"><a href="/things">See all actions</a></h3>
+	<h3 class="link"><a href="/futures/new">What I want to do next</a></h3>
 </div>
 
-
-<h3> <a href="/things/<%= @thing.id %>/edit">Edit</a></h3>
-
-<h3 class="link"><a href="/things/new">Add another</a></h3>
-<h3 class="link"><a href="/things">See everything you've done.</a></h3>
-<h3 class="link"><a href="/futures/new">What I want to do next</a></h3>
-
-<h3>
-<form action="/things/<%= @thing.id %>/delete" method="post">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="delete">
-</form>
-</h3>

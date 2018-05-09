@@ -30,6 +30,7 @@ class ApplicationController < Sinatra::Base
   end 
 end
 
+# alternatives
 # # def require_logged_in
 #   if 
 

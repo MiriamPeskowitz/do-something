@@ -20,7 +20,7 @@ class ThingsController < ApplicationController
 
 	post '/things' do
 	  if logged_in? 
-		if current_user #&& params[:title] != "" -- validation for presence done in model 
+		if current_user #&& params[:title] != "" -- not needed, validation for presence done in model 
 		  @thing = Thing.create(:date => params[:thing][:date], :title => params[:thing][:title], :description => params[:thing][:description], :user_id => current_user.id)
 		  flash[:message] = "You got this!"
 		  redirect to "/things/#{@thing.id}" # should be render 
