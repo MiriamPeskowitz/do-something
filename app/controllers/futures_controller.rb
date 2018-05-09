@@ -20,7 +20,6 @@ class FuturesController < ApplicationController
 	  	flash[:message] = "You are not able to edit this page."
 		redirect to '/users/login'
 	  else
-	  	binding.pry
 	  	  @future = Future.create(:title => params[:future][:title], :user_id => current_user.id)
 		  redirect to "/futures/#{@future.id}"
 	  end
@@ -33,8 +32,8 @@ class FuturesController < ApplicationController
 		if !logged_in? && !current_user
 			redirect to '/users/login'
 	  	else 
-	  		binding.pry
-	  		@future = Future.find_by(id: current_user.id)
+	  		
+	  		@future = Future.find_by(user_id: current_user.id)
 	  		@future.user_id == current_user.id.to_s 	
   		 	# @futures = current_user.futures.all
   		 	flash[:message] = "Great stuff to plan!"
