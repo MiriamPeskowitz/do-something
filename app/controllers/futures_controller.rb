@@ -32,10 +32,9 @@ class FuturesController < ApplicationController
 		if !logged_in? && !current_user
 			redirect to '/users/login'
 	  	else 
-	  		
-	  		@future = Future.find_by(user_id: current_user.id)
-	  		@future.user_id == current_user.id.to_s 	
+	  		@future = Future.find_by(id: params[:id])
   		 	# @futures = current_user.futures.all
+  		 	# @future.user_id = current_user.id.to_s
   		 	flash[:message] = "Great stuff to plan!"
 		 	erb :'futures/show'
 		 end

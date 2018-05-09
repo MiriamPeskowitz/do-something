@@ -3,6 +3,9 @@
 
 <h3> <a href="/futures/<%= @future.id %>/edit">Edit</a></h3>
 
+<h3 class="link"><a href="/futures">See all your future plans</a></h3>
+<h3 class="link"><a href="/things">Back to all your actions</a></h3>
+<h3 class="link"><a href="/users/logout">Logout</a></h3>
 
 <h3>
 <form action="/futures/<%= @future.id %>/delete" method="post">
@@ -10,6 +13,3 @@
   <input type="submit" value="delete">
 </form></h3>
 
-<h3><a href="/futures">See all your future plans</a></h3>
-<h3><a href="/things">Back to all your actions</a></h3>
-<h3><a href="/users/logout">Logout</a></h3>

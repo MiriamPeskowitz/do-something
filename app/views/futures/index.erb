@@ -10,7 +10,7 @@
 <h3>Next, I want to:</h3>
 	<ol>
 		<% @futures.each_with_index do |future, index| %>
-		<li> <a href='/futures/<%= future.id %>'>
-		<%= index + 1 %> . <%= future.title %> </li></a><br>
+		<li> <a href='/futures/<%= future.id %>'><%= index + 1 %> . <%= future.title %> </li></a><br>
 		<% end %>
 	</ol>
+
