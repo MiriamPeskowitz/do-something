@@ -4,13 +4,13 @@
     <h3 style="color: red;"><%= @user.errors.full_messages.first %></h3>
  <% end %>
  
-<h3 class="link"><a href="/futures/">See all</a></h3>
+<h3 class="link"><a href="/futures">See all</a></h3>
 
 
 <h3>Next, I want to:</h3>
 	<ol>
 		<% @futures.each_with_index do |future, index| %>
 		<li> <a href='/futures/<%= future.id %>'>
-		<%= index + 1 %>.<%= future.title %> </li></a><br>
+		<%= index + 1 %> . <%= future.title %> </li></a><br>
 		<% end %>
 	</ol>

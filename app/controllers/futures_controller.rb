@@ -20,7 +20,7 @@ class FuturesController < ApplicationController
 	  	flash[:message] = "You are not able to edit this page."
 		redirect to '/users/login'
 	  else
-	  		binding.pry
+	  	binding.pry
 	  	  @future = Future.create(:title => params[:future][:title], :user_id => current_user.id)
 		  redirect to "/futures/#{@future.id}"
 	  end
@@ -33,8 +33,9 @@ class FuturesController < ApplicationController
 		if !logged_in? && !current_user
 			redirect to '/users/login'
 	  	else 
+	  		binding.pry
 	  		@future = Future.find_by(id: current_user.id)
-	  		# @future.user_id.to_i == current_user.id	 	
+	  		@future.user_id == current_user.id.to_s 	
   		 	# @futures = current_user.futures.all
   		 	flash[:message] = "Great stuff to plan!"
 		 	erb :'futures/show'
@@ -48,8 +49,10 @@ class FuturesController < ApplicationController
 	  if !logged_in? 
 	  	 redirect to '/users/login'
 	  else
-	  	 @future= Future.find_by_id(current_user.id)	
-		    erb :"futures/edit"	
+	  	# WHAt do I want to do: pull down the right future.id
+	  
+	  	 @future= Future.find_by(id: params[:id])
+	  	 erb :"futures/edit"	
 	  end	  	    	   
 	end 
 
@@ -57,6 +60,7 @@ class FuturesController < ApplicationController
 	  if !logged_in? 
 	  	redirect to '/users/login' 
 	  else	
+
         @future = Future.find_by_id(params[:id])   
 	    @future.title = params[:future][:title]
 	    @future.user_id = current_user.id
