@@ -56,7 +56,6 @@ class FuturesController < ApplicationController
 	  if !logged_in? 
 	  	redirect to '/users/login' 
 	  else	
-
         @future = Future.find_by_id(params[:id])   
 	    @future.title = params[:future][:title]
 	    @future.user_id = current_user.id
