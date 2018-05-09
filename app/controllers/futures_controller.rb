@@ -1,9 +1,11 @@
 class FuturesController < ApplicationController
 
 	get '/futures' do
-	  @futures = Future.create(:title => params[:title], :user_id => current_user.id)
-	  erb :'things/index'
+	  @futures = User.find(session[:user_id]).futures
+	  # @futures = Future.create(:title => params[:title], :user_id => current_user.id)
+	  erb :'futures/index'
 	end 
+
 
 	get '/futures/new' do 
 	  if logged_in? 
@@ -13,7 +15,6 @@ class FuturesController < ApplicationController
 	  end 
 	end 
 
-#DEBUG HERE 
 	post '/futures' do
 	  if logged_in? 
 	  	if current_user
@@ -48,25 +49,21 @@ class FuturesController < ApplicationController
 	
 
 	get '/futures/:id/edit' do
-	  @future= Future.find_by(:id => params[:id]) 
-	  if logged_in? 		
-	    if current_user.id == @future.user_id	
-	      erb :"futures/edit"
-		else 
-		  redirect to '/futures'	      
-		end 
+	  if !logged_in? 
+	  	 redirect to '/users/login'
 	  else
-	    redirect to '/users/login'
-	  end 
+	  	 @future= Future.find_by_id(current_user.id)	
+		    erb :"futures/edit"	
+	  end	  	    	   
 	end 
 
 	patch '/futures/:id' do
-	  @future = Future.find_by_id(params[:id])
-	  redirect to '/users/login' if !logged_in? 
-	  if params[:title] == "" || current_user.id != @thing.user_id
-		redirect to "/futures/#{@future.id}/edit"
-	  else	   
+	  if !logged_in? 
+	  	redirect to '/users/login' 
+	  else	
+        @future = Future.find_by_id(params[:id])   
 	    @future.title = params[:future][:title]
+	    @future.user_id = current_user.id
 	    @future.save
 	    redirect to "/futures/#{@future.id}"
 	  end 
