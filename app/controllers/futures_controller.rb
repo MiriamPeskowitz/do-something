@@ -42,31 +42,28 @@ class FuturesController < ApplicationController
 	# @user.futures
 	
 	
-
 	get '/futures/:id/edit' do
-	  if !logged_in? 
-	  	 redirect to '/users/login'
-	  else  
-	  	 @future= Future.find_by(id: params[:id])
-	  	 erb :"futures/edit"	
-	  end	  	    	   
+		@future= Future.find_by(:id => params[:id]) 
+  	if current_user.id == @future.user_id
+			erb :"futures/edit"
+		else
+		 redirect to '/users/login'
+	 	end	  	    	   
 	end 
+
 
 # patch vs put? 
 
 	patch '/futures/:id' do
-	  if !logged_in? 
-	  	redirect to '/users/login' 
-	  else	
-        @future = Future.find_by_id(params[:id])   
-	    @future.title = params[:future][:title]
-	    @future.user_id = current_user.id
-	    @future.save
-	    redirect to "/futures/#{@future.id}"
+		@future = Future.find_by_id(params[:id])  
+		if current_user.id == @future.user_id
+			@future.update(params[:future])
+			redirect to "/futures/#{@future.id}"
+		else
+			redirect to '/users/login' 
 	  end 
 	end 
 # did this manually, could be @future = Future.find(params[:id]), @future.update(params: future)
-
 
 
 	delete '/futures/:id/delete' do
