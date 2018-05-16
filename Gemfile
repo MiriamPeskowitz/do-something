@@ -6,7 +6,7 @@ gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake'
 gem 'rack-protection', '~> 2.0', '>= 2.0.1'
 gem 'require_all'
-gem 'sqlite3'
+gem 'sqlite3', :group => :development
 gem 'thin'
 gem 'shotgun'
 gem 'pry'
@@ -15,6 +15,7 @@ gem "tux"
 gem "sinatra-flash"
 gem "sinatra-redirect-with-flash"
 gem 'rack', '~> 2.0.4'
+gem 'pg'
 
 
 group :test do
@@ -23,3 +24,7 @@ group :test do
   gem 'rack-test'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
 end
+
+# group :development do
+#   gem 'sqlite3'
+# end
