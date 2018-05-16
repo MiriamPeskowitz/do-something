@@ -1,6 +1,7 @@
 class ThingsController < ApplicationController
-	
-
+	# before do 
+	# # if !logged_in? redirect to '/users/login'
+	# end 
 	get '/things' do
 	  if logged_in?
 			@things = User.find(session[:user_id]).things
@@ -19,7 +20,7 @@ class ThingsController < ApplicationController
 	end
 
 	post '/things' do
-		if current_user #&& params[:title] != "" -- not needed, validation for presence done in model 
+		if current_user  
 		  @thing = Thing.new(:date => params[:thing][:date], :title => params[:thing][:title], :description => params[:thing][:description], :user_id => current_user.id)
 			if @thing.save
 				flash[:message] = "You got this!"
@@ -27,7 +28,7 @@ class ThingsController < ApplicationController
 			else 
 				flash[:message] = "Enter all the fields!"
 				erb :"things/new"
-		 end
+		  end
 	  else
 	  	flash[:message] = "You're not authorized to view this page."
 			redirect to '/users/login'
@@ -40,8 +41,7 @@ class ThingsController < ApplicationController
 			flash[:message] = "Awesome stuff!"
 			erb :'things/show'
 		else 
-			redirect to '/users/login'	
-	  else
+			redirect to '/users/login'
 	  end 
 	end 
 
@@ -77,6 +77,3 @@ class ThingsController < ApplicationController
 	  end
 	end
 end
-
-
-

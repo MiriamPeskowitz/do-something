@@ -16,12 +16,13 @@ class FuturesController < ApplicationController
 	end 
 
 	post '/futures' do
-	  if !logged_in? && !current_user
+		if current_user
+			@future = Future.create(:title => params[:future][:title], :user_id => current_user.id)
+		  redirect to "/futures/#{@future.id}"
+		else
 	  	flash[:message] = "You are not able to edit this page."
 		redirect to '/users/login'
-	  else
-	  	  @future = Future.create(:title => params[:future][:title], :user_id => current_user.id)
-		  redirect to "/futures/#{@future.id}"
+	  	 
 	  end
 	end 
 
@@ -29,15 +30,15 @@ class FuturesController < ApplicationController
 #Future.first(3)
 # or Future.limit(3).order('id asc') or a version of this. 
 	get '/futures/:id' do 
-		if !logged_in? && !current_user
-			redirect to '/users/login'
-	  	else 
+		if current_user
 	  		@future = Future.find_by(id: params[:id])
   		 	# @futures = current_user.futures.all
   		 	# @future.user_id = current_user.id.to_s
   		 	flash[:message] = "Great stuff to plan!"
-		 	erb :'futures/show'
-		 end
+			 erb :'futures/show'
+		else 
+			redirect to '/users/login'
+		end
 	end
 	# @user.futures
 	
