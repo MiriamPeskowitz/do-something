@@ -17,20 +17,22 @@
   
   <div class="wrapper">
     <% flash.keys.each do |type| %>
-      <div data-alert class="flash <%= type %> alert-box radius">
+        <div data-alert class="flash <%= type %> alert-box radius">
         <%= flash[type] %>
         <a href="#" class="close">&times;</a>
-      </div>
+        </div>
       <% end %>
+
     <% if @user && @user.errors.any? %>
-      <h3 style="color:red;"><%= @user.errors.full_messages.first %></h3>
-      <% end %>
+        <h3 style="color:red;"><%= @user.errors.full_messages.first %></h3>
+        <% end %>
 
 
     <%= yield %>
 
     <footer class="branding">
       <h3 class="link"><a href="/">Home</a></h3>
+
       <small>&copy; 2018 <strong>DoSomething</strong></small>
 
     </footer>
