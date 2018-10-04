@@ -4,20 +4,24 @@
 	<%= @thing.title %> -- <%= @thing.description %>	
 </section>
 
-<div class="buttons">
-	<h3> <a href="/things/<%= @thing.id %>/edit">Edit</a></h3>
-	<h3>
-	<form action="/things/<%= @thing.id %>/delete" method="post">
-	  <input id="hidden" type="hidden" name="_method" value="delete">
-	  <input type="submit" value="delete">
-	</form>
-	</h3>
+<section class="buttons">
+  	<h3> <a href="/things/<%= @thing.id %>/edit">Edit</a></h3>
+  	
+    <h3>
+  	    <form action="/things/<%= @thing.id %>/delete" method="post">
+  	        <input id="hidden" type="hidden" name="_method" value="delete">
+  	        <input type="submit" value="delete">
+  	    </form>
+  	</h3>
 
-	<div class="buttons">
-	<h3 class="link"><a href="/things/new">Add something new</a></h3>
-    <h3 class="link"><a href="/things">See all actions</a></h3>
-	<h3 class="link"><a href="/futures/new">Plans for the future</a></h3>
-	<h3 class="link"><a href="/users/logout">Logout</a></h3>
-	</div>
-</div>
+  	<div class="buttons">
+  	   <h3 class="link"><a href="/things/new">Add something new</a></h3>
+        
+        <h3 class="link"><a href="/things">See all actions</a></h3>
+  	   
+       <h3 class="link"><a href="/futures/new">Plans for the future</a></h3>
+  	   
+       <h3 class="link"><a href="/users/logout">Logout</a></h3>
+  	</div>
+</section>
 

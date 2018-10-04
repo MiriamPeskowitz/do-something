@@ -1,17 +1,17 @@
 <div class="topnav">
   <ul >
-    <% if logged_in? %>  
-      <li class="nav"><a href="/things/new">What did you do today? </a> </li>
-      <li class="nav"><a href="/users/logout">Logout</a> </li>
+      <% if logged_in? %>  
+          <li class="nav"><a href="/things/new">What did you do today? </a> </li>
+          <li class="nav"><a href="/users/logout">Logout</a> </li>
       
       <% else %>
-        <li class="nav"><a href='/users/login'>Login</a> </li>
-        <li class="nav"><a href="/users/signup">Sign up</a> </li>
+          <li class="nav"><a href='/users/login'>Login</a> </li>
+          <li class="nav"><a href="/users/signup">Sign up</a> </li>
       <% end %>
   </ul>
 </div>
 
-  <br>
+<br>
 
 <h1>Do Something Now </h1>
 
@@ -19,13 +19,13 @@
 
 <div id="doing">
   <h3> What are people doing? </h3>
-    <ul>
-      <% @things.each do |thing| %>
-        <li>
-           <%= thing.title %> -- <%= thing.description %>
-        </li>
-          <br>
-      <% end %>
-    </ul>
+      <ul>
+        <% @things.each do |thing| %>
+          <li>
+             <%= thing.title %> -- <%= thing.description %>
+          </li>
+            <br>
+        <% end %>
+      </ul>
 </div>
 
