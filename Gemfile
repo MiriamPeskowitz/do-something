@@ -14,7 +14,7 @@ gem "tux"
 gem "sinatra-flash"
 gem "sinatra-redirect-with-flash"
 gem 'rack', '~> 2.0.4'
-gem 'pg'
+
 # gem 'ruby', '2.3.7'
 
 
@@ -25,6 +25,11 @@ group :test do
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
 end
 
-group :development do
+group :development, :test do
   gem 'sqlite3'
 end
+
+group :production do
+  gem 'pg'
+end
+
