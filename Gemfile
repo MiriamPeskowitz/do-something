@@ -32,7 +32,7 @@ group :development, :test do
 end
 
 group :development, :test do
-  gem 'pg'
+  gem 'pg', '~> 1.1', '>= 1.1.3'
 end
 
 ruby '2.4.2'
