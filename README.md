@@ -14,7 +14,7 @@ Big Picture User stories:
 
 ## Instructions/Install 
 
-Fork.
+Fork. Bundle. 
 
 Use Shotgun to load local server.  
 
