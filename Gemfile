@@ -14,6 +14,7 @@ gem "tux"
 gem "sinatra-flash"
 gem "sinatra-redirect-with-flash"
 gem 'rack', '~> 2.0.4'
+gem 'pg'
 
 # gem 'ruby', '2.3.7'
 
@@ -29,7 +30,5 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-group :production do
-  gem 'pg'
-end
+
 
