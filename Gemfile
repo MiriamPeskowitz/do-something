@@ -15,6 +15,7 @@ gem "sinatra-flash"
 gem "sinatra-redirect-with-flash"
 gem 'rack', '~> 2.0.4'
 # gem 'pg'
+gem 'bundler', '~> 1.17', '>= 1.17.1'
 
 #gem 'ruby', '2.3.7'
 
