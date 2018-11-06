@@ -16,7 +16,7 @@ gem "sinatra-redirect-with-flash"
 gem 'rack', '~> 2.0.4'
 gem 'pg'
 
-# gem 'ruby', '2.3.7'
+#gem 'ruby', '2.3.7'
 
 
 group :test do
@@ -29,6 +29,8 @@ end
 group :development, :test do
   gem 'sqlite3'
 end
+
+ruby 2.3.7
 
 
 

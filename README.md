@@ -16,6 +16,8 @@ Big Picture User stories:
 
 Fork. Bundle. 
 
+Built on Ruby 2.3.7.
+
 Use Shotgun to load local server.  
 
 Heroku deployment coming soon. 
