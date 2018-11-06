@@ -1,5 +1,24 @@
+development:
+  adapter: sqlite3
+  database: do-something_development
+  pool: 5
+  timeout: 5000
+
+# test:
+#   adapter: postgresql
+#   database: do-something_test
+#   pool: 5
+#   timeout: 5000
+
+production:
+  adapter: postgresql
+  database: do-something_production
+  pool: 5
+  timeout: 5000
+
+
 # default: &default
-#   adapter: sqlite3
+#   adapter: postgresql
 #   pool: 5
 #   timeout: 5000
 
@@ -20,35 +39,35 @@
 #   username: <%= ENV['DATABASE_USER'] || 'sinatra' %>
 #   password: <%= ENV['DATABASE_PASSWORD'] || 'sinatra' %>
 
-development:
-  adapter: sqlite3
-  database: db/development.sqlite
-  host: localhost
-  pool: 5
-  timeout: 5000
-
-production:
-  url: <%= ENV['DATABASE_URL'] %>
-  adapter: postgresql
-  database: mydb
-  host: localhost 
-  pool: 5
-  timeout: 5000
-
-
 # development:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: database_name
-#   pool: 2
-#   username: your_username
-#   password: your_password
+#   adapter: sqlite3
+#   database: db/development.sqlite
+#   host: localhost
+#   pool: 5
+#   timeout: 5000
 
 # production:
+#   url: <%= ENV['DATABASE_URL'] %>
 #   adapter: postgresql
-#   encoding: unicode
+#   database: mydb
+#   host: localhost 
 #   pool: 5
-#   host: <%= ENV['DATABASE_HOST'] %>
-#   database: <%= ENV['DATABASE_NAME'] %>
-#   username: <%= ENV['DATABASE_USER'] %>
-#   password: <%= ENV['DATABASE_PASSWORD'] %>
+#   timeout: 5000
+
+
+# # development:
+# #   adapter: postgresql
+# #   encoding: unicode
+# #   database: database_name
+# #   pool: 2
+# #   username: your_username
+# #   password: your_password
+
+# # production:
+# #   adapter: postgresql
+# #   encoding: unicode
+# #   pool: 5
+# #   host: <%= ENV['DATABASE_HOST'] %>
+# #   database: <%= ENV['DATABASE_NAME'] %>
+# #   username: <%= ENV['DATABASE_USER'] %>
+# #   password: <%= ENV['DATABASE_PASSWORD'] %>
